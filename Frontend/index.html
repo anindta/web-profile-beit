@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile - Home</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d3748;
+            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .nav-menu a.active {
+            color: #667eea;
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            color: #667eea;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero .container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Company Info */
+        .company-info {
+            background: white;
+        }
+
+        .company-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .company-content h3 {
+            font-size: 32px;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .company-content p {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .company-image {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e9d5ff 100%);
+            border-radius: 16px;
+        }
+
+        .company-image i {
+            font-size: 180px;
+            color: #667eea;
+            opacity: 0.8;
+        }
+
+        /* Vision Mission */
+        .vision-mission {
+            background: #f8f9fa;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .vm-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .vm-card i {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 24px;
+        }
+
+        .vm-card h3 {
+            font-size: 28px;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+
+        .vm-card p {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        /* Services */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #667eea;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .service-card i {
+            font-size: 56px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: #cbd5e0;
+            padding: 60px 24px 30px;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-section i {
+            margin-right: 8px;
+            color: #667eea;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #4a5568;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100% - 70px);
+                background: white;
+                flex-direction: column;
+                padding: 40px 24px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 16px 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .company-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vm-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .cta h2 {
+                font-size: 32px;
+            }
+
+            .company-image i {
+                font-size: 120px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="page-wrapper"><!-- Navbar -->
+   <nav class="navbar">
+    <div class="container"><a href="#" class="logo"> <i class="fas fa-rocket"></i> <span>PT Inovasi Digital</span> </a>
+     <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
+     </div>
+     <ul class="nav-menu" id="navMenu">
+      <li><a href="/index.html" class="active">Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/service.html">Services</a></li>
+      <li><a href="/portofolio.html">Portfolio</a></li>
+      <li><a href="/team.html">Team</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+     </ul>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="hero">
+    <div class="container">
+     <h1>Solusi Digital Terbaik untuk Bisnis Anda</h1>
+     <p>Kami membantu perusahaan bertransformasi digital dengan teknologi terkini dan tim profesional berpengalaman</p>
+     <div class="hero-buttons"><a href="#contact" class="btn btn-primary"> <i class="fas fa-rocket"></i> Mulai Sekarang </a> <a href="#services" class="btn btn-outline"> <i class="fas fa-info-circle"></i> Pelajari Lebih Lanjut </a>
+     </div>
+    </div>
+   </section><!-- Company Info -->
+   <section class="section company-info" id="about">
+    <div class="container">
+     <div class="company-grid">
+      <div class="company-content">
+       <h3>Tentang Perusahaan Kami</h3>
+       <p>PT Inovasi Digital adalah perusahaan teknologi yang berfokus pada pengembangan solusi digital inovatif untuk berbagai industri. Dengan pengalaman lebih dari 10 tahun, kami telah melayani ratusan klien dari berbagai sektor bisnis.</p>
+       <p>Kami berkomitmen untuk memberikan layanan terbaik dengan mengutamakan kualitas, inovasi, dan kepuasan klien. Tim profesional kami siap membantu mewujudkan visi digital perusahaan Anda.</p><a href="#contact" class="btn btn-primary" style="margin-top: 16px;"> <i class="fas fa-phone"></i> Hubungi Kami </a>
+      </div>
+      <div class="company-image"><i class="fas fa-building"></i>
+      </div>
+     </div>
+    </div>
+   </section><!-- Vision Mission -->
+   <section class="section vision-mission">
+    <div class="container">
+     <div class="section-title">
+      <h2>Visi &amp; Misi</h2>
+      <p>Komitmen kami untuk memberikan yang terbaik</p>
+     </div>
+     <div class="vm-grid">
+      <div class="vm-card"><i class="fas fa-eye"></i>
+       <h3>Visi</h3>
+       <p>Menjadi perusahaan teknologi terdepan di Indonesia yang menghadirkan solusi digital inovatif dan berkelanjutan untuk mendorong transformasi digital di berbagai sektor industri.</p>
+      </div>
+      <div class="vm-card"><i class="fas fa-bullseye"></i>
+       <h3>Misi</h3>
+       <p>Mengembangkan produk dan layanan teknologi berkualitas tinggi, membangun kemitraan strategis dengan klien, serta memberdayakan tim profesional untuk menciptakan dampak positif bagi masyarakat dan bisnis.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services -->
+   <section class="section services" id="services">
+    <div class="container">
+     <div class="section-title">
+      <h2>Layanan Kami</h2>
+      <p>Solusi komprehensif untuk kebutuhan digital Anda</p>
+     </div>
+     <div class="services-grid">
+      <div class="service-card"><i class="fas fa-laptop-code"></i>
+       <h3>Web Development</h3>
+       <p>Pembuatan website profesional dan responsif dengan teknologi terkini untuk meningkatkan kehadiran online bisnis Anda</p>
+      </div>
+      <div class="service-card"><i class="fas fa-mobile-alt"></i>
+       <h3>Mobile Apps</h3>
+       <p>Pengembangan aplikasi mobile Android dan iOS yang user-friendly dan powerful untuk menjangkau pelanggan Anda</p>
+      </div>
+      <div class="service-card"><i class="fas fa-cloud"></i>
+       <h3>Cloud Solutions</h3>
+       <p>Implementasi infrastruktur cloud yang aman, scalable, dan cost-effective untuk mendukung operasional bisnis</p>
+      </div>
+      <div class="service-card"><i class="fas fa-shield-alt"></i>
+       <h3>Cybersecurity</h3>
+       <p>Solusi keamanan siber komprehensif untuk melindungi data dan sistem perusahaan dari ancaman digital</p>
+      </div>
+      <div class="service-card"><i class="fas fa-chart-line"></i>
+       <h3>Digital Marketing</h3>
+       <p>Strategi pemasaran digital terintegrasi untuk meningkatkan brand awareness dan konversi penjualan</p>
+      </div>
+      <div class="service-card"><i class="fas fa-headset"></i>
+       <h3>IT Consulting</h3>
+       <p>Konsultasi teknologi informasi untuk membantu perusahaan mengoptimalkan sistem dan proses bisnis</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA -->
+   <section class="section cta">
+    <div class="container">
+     <h2>Siap Memulai Transformasi Digital?</h2>
+     <p>Hubungi kami hari ini dan konsultasikan kebutuhan digital bisnis Anda</p><a href="#contact" class="btn btn-primary"> <i class="fas fa-paper-plane"></i> Konsultasi Gratis </a>
+    </div>
+   </section><!-- Footer -->
+   <footer class="footer">
+    <div class="container">
+     <div class="footer-grid">
+      <div class="footer-section">
+       <h3>PT Inovasi Digital</h3>
+       <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital perusahaan Anda.</p>
+       <div class="social-links"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+       </div>
+      </div>
+      <div class="footer-section">
+       <h3>Quick Links</h3><a href="#about">About Us</a> <a href="#services">Services</a> <a href="#portfolio">Portfolio</a> <a href="#team">Team</a>
+      </div>
+      <div class="footer-section">
+       <h3>Services</h3><a href="#services">Web Development</a> <a href="#services">Mobile Apps</a> <a href="#services">Cloud Solutions</a> <a href="#services">IT Consulting</a>
+      </div>
+      <div class="footer-section">
+       <h3>Contact</h3>
+       <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
+       <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+       <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
+      </div>
+     </div>
+     <div class="footer-bottom">
+      <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navMenu = document.getElementById('navMenu');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+                if (current === '' && link.getAttribute('href') === '#') {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a067a5a16bc283c',t:'MTc2MzQ1ODUyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

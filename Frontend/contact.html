@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Company Profile</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d3748;
+            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .nav-menu a.active {
+            color: #667eea;
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #667eea;
+            border-radius: 3px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            color: #667eea;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-header .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            opacity: 0.95;
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 24px;
+        }
+
+        .section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-section {
+            background: white;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .contact-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-size: 22px;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .contact-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #764ba2;
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background: #f8f9fa;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .form-info {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-info h2 {
+            font-size: 32px;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+
+        .form-info p {
+            font-size: 16px;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: #f0f4ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-icon i {
+            font-size: 20px;
+            color: #667eea;
+        }
+
+        .info-content h4 {
+            font-size: 16px;
+            color: #2d3748;
+            margin-bottom: 6px;
+        }
+
+        .info-content p {
+            font-size: 15px;
+            color: #4a5568;
+            margin: 0;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #2d3748;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+
+        .success-message i {
+            font-size: 20px;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            padding: 0;
+        }
+
+        .map-container {
+            height: 450px;
+            background: #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+        }
+
+        .map-placeholder i {
+            font-size: 64px;
+            color: #cbd5e0;
+            margin-bottom: 16px;
+        }
+
+        /* Social Section */
+        .social-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .social-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: #cbd5e0;
+            padding: 60px 24px 30px;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-section i {
+            margin-right: 8px;
+            color: #667eea;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .footer-social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #4a5568;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .footer-social-links a:hover {
+            background: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100% - 70px);
+                background: white;
+                flex-direction: column;
+                padding: 40px 24px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 16px 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .social-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="page-wrapper"><!-- Navbar -->
+   <nav class="navbar">
+    <div class="container"><a href="index.html" class="logo"> <i class="fas fa-rocket"></i> <span>PT Inovasi Digital</span> </a>
+     <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
+     </div>
+     <ul class="nav-menu" id="navMenu">
+    <li><a href="/index.html" >Home</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/service.html">Services</a></li>
+      <li><a href="/portofolio.html">Portfolio</a></li>
+      <li><a href="/team.html">Team</a></li>
+      <li><a href="/contact.html" class="active">Contact</a></li>
+     </ul>
+    </div>
+   </nav><!-- Page Header -->
+   <section class="page-header">
+    <div class="container">
+     <h1>Hubungi Kami</h1>
+     <p>Siap membantu mewujudkan visi digital Anda</p>
+    </div>
+   </section><!-- Contact Info -->
+   <section class="section contact-info-section">
+    <div class="container">
+     <div class="contact-cards">
+      <div class="contact-card">
+       <div class="contact-icon"><i class="fas fa-map-marker-alt"></i>
+       </div>
+       <h3>Alamat Kantor</h3>
+       <p>Jl. Teknologi No. 123<br>
+        Jakarta Selatan 12345<br>
+        Indonesia</p>
+      </div>
+      <div class="contact-card">
+       <div class="contact-icon"><i class="fas fa-phone"></i>
+       </div>
+       <h3>Telepon</h3>
+       <p>Office: <a href="tel:+622112345678">+62 21 1234 5678</a></p>
+       <p>Mobile: <a href="tel:+628123456789">+62 812 3456 789</a></p>
+      </div>
+      <div class="contact-card">
+       <div class="contact-icon"><i class="fas fa-envelope"></i>
+       </div>
+       <h3>Email</h3>
+       <p>Info: <a href="mailto:info@inovasidigital.com">info@inovasidigital.com</a></p>
+       <p>Support: <a href="mailto:support@inovasidigital.com">support@inovasidigital.com</a></p>
+      </div>
+      <div class="contact-card">
+       <div class="contact-icon"><i class="fas fa-clock"></i>
+       </div>
+       <h3>Jam Operasional</h3>
+       <p>Senin - Jumat: 09:00 - 18:00</p>
+       <p>Sabtu: 09:00 - 15:00</p>
+       <p>Minggu: Tutup</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Form -->
+   <section class="section contact-form-section">
+    <div class="container">
+     <div class="form-grid">
+      <div class="form-info">
+       <h2>Mari Berdiskusi</h2>
+       <p>Kami siap mendengarkan kebutuhan Anda dan memberikan solusi teknologi terbaik untuk bisnis Anda. Isi form di samping atau hubungi kami langsung melalui kontak yang tersedia.</p>
+       <div class="info-item">
+        <div class="info-icon"><i class="fas fa-headset"></i>
+        </div>
+        <div class="info-content">
+         <h4>Customer Support</h4>
+         <p>Tim support kami siap membantu Anda 24/7</p>
+        </div>
+       </div>
+       <div class="info-item">
+        <div class="info-icon"><i class="fas fa-rocket"></i>
+        </div>
+        <div class="info-content">
+         <h4>Quick Response</h4>
+         <p>Respon maksimal 24 jam kerja</p>
+        </div>
+       </div>
+       <div class="info-item">
+        <div class="info-icon"><i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="info-content">
+         <h4>Data Privacy</h4>
+         <p>Informasi Anda aman dan terlindungi</p>
+        </div>
+       </div>
+       <div class="info-item">
+        <div class="info-icon"><i class="fas fa-award"></i>
+        </div>
+        <div class="info-content">
+         <h4>Professional Team</h4>
+         <p>Ditangani oleh tim berpengalaman</p>
+        </div>
+       </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+       <div class="success-message" id="successMessage"><i class="fas fa-check-circle"></i> <span>Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan segera menghubungi Anda.</span>
+       </div>
+       <div class="form-row">
+        <div class="form-group"><label for="firstName">Nama Depan *</label> <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group"><label for="lastName">Nama Belakang *</label> <input type="text" id="lastName" name="lastName" required>
+        </div>
+       </div>
+       <div class="form-row">
+        <div class="form-group"><label for="email">Email *</label> <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group"><label for="phone">Nomor Telepon *</label> <input type="tel" id="phone" name="phone" required>
+        </div>
+       </div>
+       <div class="form-group"><label for="company">Nama Perusahaan</label> <input type="text" id="company" name="company">
+       </div>
+       <div class="form-group"><label for="subject">Subjek *</label> <select id="subject" name="subject" required> <option value="">Pilih subjek...</option> <option value="general">Pertanyaan Umum</option> <option value="service">Layanan &amp; Solusi</option> <option value="partnership">Kerjasama &amp; Partnership</option> <option value="support">Technical Support</option> <option value="career">Karir &amp; Lowongan</option> <option value="other">Lainnya</option> </select>
+       </div>
+       <div class="form-group"><label for="message">Pesan Anda *</label> <textarea id="message" name="message" required placeholder="Ceritakan kebutuhan Anda..."></textarea>
+       </div><button type="submit" class="submit-btn" id="submitBtn"> <i class="fas fa-paper-plane"></i> <span>Kirim Pesan</span> </button>
+      </form>
+     </div>
+    </div>
+   </section><!-- Map -->
+   <section class="section map-section">
+    <div class="container">
+     <div class="map-container">
+      <div class="map-placeholder"><i class="fas fa-map-marked-alt"></i>
+       <p>Google Maps Integration</p>
+       <p style="font-size: 14px; margin-top: 8px;">Jl. Teknologi No. 123, Jakarta Selatan</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Social Media -->
+   <section class="section social-section">
+    <div class="container">
+     <h2>Ikuti Kami</h2>
+     <p>Stay connected dan dapatkan update terbaru dari kami</p>
+     <div class="social-links"><a href="#" class="social-link" aria-label="Facebook"> <i class="fab fa-facebook-f"></i> </a> <a href="#" class="social-link" aria-label="Twitter"> <i class="fab fa-twitter"></i> </a> <a href="#" class="social-link" aria-label="Instagram"> <i class="fab fa-instagram"></i> </a> <a href="#" class="social-link" aria-label="LinkedIn"> <i class="fab fa-linkedin-in"></i> </a> <a href="#" class="social-link" aria-label="YouTube"> <i class="fab fa-youtube"></i> </a> <a href="#" class="social-link" aria-label="GitHub"> <i class="fab fa-github"></i> </a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="footer">
+    <div class="container">
+     <div class="footer-grid">
+      <div class="footer-section">
+       <h3>PT Inovasi Digital</h3>
+       <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital perusahaan Anda.</p>
+       <div class="footer-social-links"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+       </div>
+      </div>
+      <div class="footer-section">
+       <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a href="services.html">Services</a> <a href="team.html">Team</a>
+      </div>
+      <div class="footer-section">
+       <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT Consulting</a>
+      </div>
+      <div class="footer-section">
+       <h3>Contact</h3>
+       <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
+       <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+       <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
+      </div>
+     </div>
+     <div class="footer-bottom">
+      <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Mengirim...</span>';
+            submitBtn.disabled = true;
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(function() {
+                // Show success message
+                successMessage.classList.add('show');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button
+                submitBtn.classList.remove('loading');
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Kirim Pesan</span>';
+                submitBtn.disabled = false;
+
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                }, 5000);
+
+                // Log form data (for demo purposes)
+                console.log('Form submitted:', formData);
+                
+                // Here you would typically send the data to your backend:
+                // fetch('/api/contact', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(formData)
+                // });
+            }, 1500);
+        });
+
+        // Form validation styling
+        const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select');
+        
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '' && this.hasAttribute('required')) {
+                    this.style.borderColor = '#f56565';
+                } else {
+                    this.style.borderColor = '#e2e8f0';
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#667eea';
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a076a7be580f8c4',t:'MTc2MzQ2ODM2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

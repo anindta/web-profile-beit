@@ -1,0 +1,2327 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - PT Inovasi Digital</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        .dashboard-wrapper {
+            height: 100%;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #2d3748;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 100;
+        }
+
+        .sidebar.collapsed {
+            width: 80px;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            background: #1a202c;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .sidebar-logo i {
+            font-size: 28px;
+            color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .sidebar-logo span {
+            font-size: 18px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .sidebar-logo span {
+            opacity: 0;
+            width: 0;
+        }
+
+        .sidebar-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .sidebar-toggle:hover {
+            background: #4a5568;
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .menu-section {
+            margin-bottom: 24px;
+        }
+
+        .menu-title {
+            padding: 0 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a0aec0;
+            margin-bottom: 8px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .menu-title {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: #4a5568;
+            color: white;
+        }
+
+        .menu-item.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .menu-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+        }
+
+        .menu-item i {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .menu-item span {
+            font-size: 15px;
+            white-space: nowrap;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .menu-item span {
+            opacity: 0;
+            width: 0;
+        }
+
+        .sidebar.collapsed .menu-item {
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid #4a5568;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .user-info {
+            flex: 1;
+            overflow: hidden;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .user-info {
+            opacity: 0;
+            width: 0;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: #a0aec0;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: white;
+            padding: 20px 32px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .page-title h1 {
+            font-size: 28px;
+            color: #2d3748;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .breadcrumb i {
+            font-size: 12px;
+        }
+
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 10px 16px 10px 40px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            width: 250px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            width: 300px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+        }
+
+        .notification-btn, .logout-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f7fafc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            color: #4a5568;
+        }
+
+        .notification-btn:hover, .logout-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 18px;
+            height: 18px;
+            background: #f56565;
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .stat-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .stat-icon.blue {
+            background: #ebf4ff;
+            color: #667eea;
+        }
+
+        .stat-icon.green {
+            background: #e6fffa;
+            color: #38b2ac;
+        }
+
+        .stat-icon.orange {
+            background: #fff5f0;
+            color: #ed8936;
+        }
+
+        .stat-icon.purple {
+            background: #faf5ff;
+            color: #9f7aea;
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #718096;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .stat-change {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stat-change.positive {
+            color: #38a169;
+        }
+
+        .stat-change.negative {
+            color: #e53e3e;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .section-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #edf2f7;
+        }
+
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table thead {
+            background: #f7fafc;
+        }
+
+        .data-table th {
+            padding: 16px 24px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .data-table td {
+            padding: 16px 24px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #2d3748;
+        }
+
+        .data-table tbody tr {
+            transition: all 0.3s;
+        }
+
+        .data-table tbody tr:hover {
+            background: #f7fafc;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge.published {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-badge.draft {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #f7fafc;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #4a5568;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-btn.edit:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .action-btn.delete:hover {
+            background: #f56565;
+            color: white;
+        }
+
+        .action-btn.view:hover {
+            background: #38b2ac;
+            color: white;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 24px;
+        }
+
+        .quick-action-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .quick-action-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .quick-action-card i {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .quick-action-card span {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* Mobile Sidebar Toggle */
+        .mobile-sidebar-toggle {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            z-index: 999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                bottom: 0;
+                z-index: 1000;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .mobile-sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .top-bar {
+                padding: 16px 20px;
+            }
+
+            .search-box input {
+                width: 150px;
+            }
+
+            .search-box input:focus {
+                width: 200px;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-title h1 {
+                font-size: 22px;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="dashboard-wrapper"><!-- Sidebar -->
+   <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+     <div class="sidebar-logo"><i class="fas fa-rocket"></i> <span>Admin Panel</span>
+     </div><button class="sidebar-toggle" id="sidebarToggle"> <i class="fas fa-bars"></i> </button>
+    </div>
+    <nav class="sidebar-menu">
+     <div class="menu-section">
+      <div class="menu-title">
+       Main
+      </div><a href="#" class="menu-item active" data-page="dashboard"> <i class="fas fa-home"></i> <span>Dashboard</span> </a> <a href="#" class="menu-item" data-page="analytics"> <i class="fas fa-chart-line"></i> <span>Analytics</span> </a>
+     </div>
+     <div class="menu-section">
+      <div class="menu-title">
+       Content
+      </div><a href="#" class="menu-item" data-page="pages"> <i class="fas fa-file-alt"></i> <span>Pages</span> </a> <a href="#" class="menu-item" data-page="services"> <i class="fas fa-cogs"></i> <span>Services</span> </a> <a href="#" class="menu-item" data-page="portfolio"> <i class="fas fa-briefcase"></i> <span>Portfolio</span> </a> <a href="#" class="menu-item" data-page="team"> <i class="fas fa-users"></i> <span>Team Members</span> </a> <a href="#" class="menu-item" data-page="testimonials"> <i class="fas fa-quote-right"></i> <span>Testimonials</span> </a>
+     </div>
+     <div class="menu-section">
+      <div class="menu-title">
+       Communication
+      </div><a href="#" class="menu-item" data-page="messages"> <i class="fas fa-envelope"></i> <span>Messages</span> </a> <a href="#" class="menu-item" data-page="newsletter"> <i class="fas fa-paper-plane"></i> <span>Newsletter</span> </a>
+     </div>
+     <div class="menu-section">
+      <div class="menu-title">
+       Settings
+      </div><a href="#" class="menu-item" data-page="site-settings"> <i class="fas fa-sliders-h"></i> <span>Site Settings</span> </a> <a href="#" class="menu-item" data-page="users"> <i class="fas fa-user-shield"></i> <span>Users</span> </a>
+     </div>
+    </nav>
+    <div class="sidebar-footer">
+     <div class="user-profile">
+      <div class="user-avatar">
+       A
+      </div>
+      <div class="user-info">
+       <div class="user-name">
+        Admin User
+       </div>
+       <div class="user-role">
+        Administrator
+       </div>
+      </div>
+     </div>
+    </div>
+   </aside><!-- Main Content -->
+   <main class="main-content"><!-- Top Bar -->
+    <header class="top-bar">
+     <div class="page-title">
+      <div>
+       <h1>Dashboard</h1>
+       <div class="breadcrumb"><span>Home</span> <i class="fas fa-chevron-right"></i> <span>Dashboard</span>
+       </div>
+      </div>
+     </div>
+     <div class="top-bar-actions">
+      <div class="search-box"><i class="fas fa-search"></i> <input type="text" placeholder="Search...">
+      </div><button class="notification-btn"> <i class="fas fa-bell"></i> <span class="notification-badge">3</span> </button> <button class="logout-btn" id="logoutBtn" title="Logout"> <i class="fas fa-sign-out-alt"></i> </button>
+     </div>
+    </header><!-- Content Area -->
+    <div class="content-area"><!-- Stats Cards -->
+     <div class="stats-grid">
+      <div class="stat-card">
+       <div class="stat-icon blue"><i class="fas fa-eye"></i>
+       </div>
+       <div class="stat-info">
+        <div class="stat-label">
+         Total Views
+        </div>
+        <div class="stat-value">
+         24,567
+        </div>
+        <div class="stat-change positive"><i class="fas fa-arrow-up"></i> <span>12% from last month</span>
+        </div>
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-icon green"><i class="fas fa-briefcase"></i>
+       </div>
+       <div class="stat-info">
+        <div class="stat-label">
+         Projects
+        </div>
+        <div class="stat-value">
+         48
+        </div>
+        <div class="stat-change positive"><i class="fas fa-arrow-up"></i> <span>8% from last month</span>
+        </div>
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-icon orange"><i class="fas fa-envelope"></i>
+       </div>
+       <div class="stat-info">
+        <div class="stat-label">
+         Messages
+        </div>
+        <div class="stat-value">
+         127
+        </div>
+        <div class="stat-change negative"><i class="fas fa-arrow-down"></i> <span>3% from last month</span>
+        </div>
+       </div>
+      </div>
+      <div class="stat-card">
+       <div class="stat-icon purple"><i class="fas fa-users"></i>
+       </div>
+       <div class="stat-info">
+        <div class="stat-label">
+         Team Members
+        </div>
+        <div class="stat-value">
+         12
+        </div>
+        <div class="stat-change positive"><i class="fas fa-arrow-up"></i> <span>2 new this month</span>
+        </div>
+       </div>
+      </div>
+     </div><!-- Quick Actions -->
+     <div class="content-section">
+      <div class="section-header">
+       <h2 class="section-title">Quick Actions</h2>
+      </div>
+      <div class="quick-actions"><a href="#" class="quick-action-card"> <i class="fas fa-plus-circle"></i> <span>Add New Page</span> </a> <a href="#" class="quick-action-card"> <i class="fas fa-image"></i> <span>Add Portfolio</span> </a> <a href="#" class="quick-action-card"> <i class="fas fa-user-plus"></i> <span>Add Team Member</span> </a> <a href="#" class="quick-action-card"> <i class="fas fa-cog"></i> <span>Site Settings</span> </a>
+      </div>
+     </div><!-- Recent Content -->
+     <div class="content-section">
+      <div class="section-header">
+       <h2 class="section-title">Recent Content</h2>
+       <div class="section-actions"><button class="btn btn-secondary"> <i class="fas fa-filter"></i> Filter </button> <button class="btn btn-primary"> <i class="fas fa-plus"></i> Add New </button>
+       </div>
+      </div>
+      <table class="data-table">
+       <thead>
+        <tr>
+         <th>Title</th>
+         <th>Type</th>
+         <th>Status</th>
+         <th>Date</th>
+         <th>Author</th>
+         <th>Actions</th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>Website Development Services</td>
+         <td>Service</td>
+         <td><span class="status-badge published">Published</span></td>
+         <td>Jan 15, 2024</td>
+         <td>Admin</td>
+         <td>
+          <div class="action-buttons"><button class="action-btn view" title="View"> <i class="fas fa-eye"></i> </button> <button class="action-btn edit" title="Edit"> <i class="fas fa-edit"></i> </button> <button class="action-btn delete" title="Delete"> <i class="fas fa-trash"></i> </button>
+          </div></td>
+        </tr>
+        <tr>
+         <td>E-Commerce Platform Project</td>
+         <td>Portfolio</td>
+         <td><span class="status-badge published">Published</span></td>
+         <td>Jan 12, 2024</td>
+         <td>Admin</td>
+         <td>
+          <div class="action-buttons"><button class="action-btn view" title="View"> <i class="fas fa-eye"></i> </button> <button class="action-btn edit" title="Edit"> <i class="fas fa-edit"></i> </button> <button class="action-btn delete" title="Delete"> <i class="fas fa-trash"></i> </button>
+          </div></td>
+        </tr>
+        <tr>
+         <td>John Doe - Lead Developer</td>
+         <td>Team</td>
+         <td><span class="status-badge published">Published</span></td>
+         <td>Jan 10, 2024</td>
+         <td>Admin</td>
+         <td>
+          <div class="action-buttons"><button class="action-btn view" title="View"> <i class="fas fa-eye"></i> </button> <button class="action-btn edit" title="Edit"> <i class="fas fa-edit"></i> </button> <button class="action-btn delete" title="Delete"> <i class="fas fa-trash"></i> </button>
+          </div></td>
+        </tr>
+        <tr>
+         <td>Mobile App Development</td>
+         <td>Service</td>
+         <td><span class="status-badge draft">Draft</span></td>
+         <td>Jan 08, 2024</td>
+         <td>Admin</td>
+         <td>
+          <div class="action-buttons"><button class="action-btn view" title="View"> <i class="fas fa-eye"></i> </button> <button class="action-btn edit" title="Edit"> <i class="fas fa-edit"></i> </button> <button class="action-btn delete" title="Delete"> <i class="fas fa-trash"></i> </button>
+          </div></td>
+        </tr>
+        <tr>
+         <td>Corporate Website Redesign</td>
+         <td>Portfolio</td>
+         <td><span class="status-badge draft">Draft</span></td>
+         <td>Jan 05, 2024</td>
+         <td>Admin</td>
+         <td>
+          <div class="action-buttons"><button class="action-btn view" title="View"> <i class="fas fa-eye"></i> </button> <button class="action-btn edit" title="Edit"> <i class="fas fa-edit"></i> </button> <button class="action-btn delete" title="Delete"> <i class="fas fa-trash"></i> </button>
+          </div></td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </main>
+  </div><!-- Mobile Sidebar Toggle --> <button class="mobile-sidebar-toggle" id="mobileSidebarToggle"> <i class="fas fa-bars"></i> </button> <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <script>
+        // Check if user is logged in - skip redirect since this is embedded
+        const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+        
+        if (!isLoggedIn) {
+            // Show login form instead
+            document.querySelector('.dashboard-wrapper').style.display = 'none';
+            document.querySelector('.mobile-sidebar-toggle').style.display = 'none';
+            showLoginForm();
+        }
+        
+        function showLoginForm() {
+            const loginHTML = `
+                <div style="
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    padding: 20px;
+                ">
+                    <div style="
+                        background: white;
+                        padding: 48px 40px;
+                        border-radius: 20px;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        max-width: 420px;
+                        width: 100%;
+                    ">
+                        <div style="text-align: center; margin-bottom: 32px;">
+                            <div style="
+                                width: 80px;
+                                height: 80px;
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                border-radius: 20px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 20px;
+                                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+                            ">
+                                <i class="fas fa-rocket" style="font-size: 40px; color: white;"></i>
+                            </div>
+                            <h1 style="font-size: 28px; color: #2d3748; margin-bottom: 8px;">Admin Login</h1>
+                            <p style="color: #718096; font-size: 14px;">Masuk ke dashboard admin</p>
+                        </div>
+                        
+                        <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                    <i class="fas fa-user" style="margin-right: 8px; color: #667eea;"></i>
+                                    Username
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="username" 
+                                    placeholder="Masukkan username"
+                                    required
+                                    style="
+                                        width: 100%;
+                                        padding: 12px 16px;
+                                        border: 2px solid #e2e8f0;
+                                        border-radius: 10px;
+                                        font-size: 15px;
+                                        transition: all 0.3s;
+                                    "
+                                    onfocus="this.style.borderColor='#667eea'"
+                                    onblur="this.style.borderColor='#e2e8f0'"
+                                >
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                    <i class="fas fa-lock" style="margin-right: 8px; color: #667eea;"></i>
+                                    Password
+                                </label>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    placeholder="Masukkan password"
+                                    required
+                                    style="
+                                        width: 100%;
+                                        padding: 12px 16px;
+                                        border: 2px solid #e2e8f0;
+                                        border-radius: 10px;
+                                        font-size: 15px;
+                                        transition: all 0.3s;
+                                    "
+                                    onfocus="this.style.borderColor='#667eea'"
+                                    onblur="this.style.borderColor='#e2e8f0'"
+                                >
+                            </div>
+                            
+                            <div id="errorMessage" style="
+                                display: none;
+                                padding: 12px;
+                                background: #fed7d7;
+                                color: #742a2a;
+                                border-radius: 8px;
+                                font-size: 14px;
+                                text-align: center;
+                            "></div>
+                            
+                            <button 
+                                type="submit" 
+                                style="
+                                    padding: 14px;
+                                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                    color: white;
+                                    border: none;
+                                    border-radius: 10px;
+                                    font-size: 16px;
+                                    font-weight: 700;
+                                    cursor: pointer;
+                                    transition: all 0.3s;
+                                    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+                                "
+                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.5)'"
+                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)'"
+                            >
+                                <i class="fas fa-sign-in-alt" style="margin-right: 8px;"></i>
+                                Login
+                            </button>
+                        </form>
+                        
+                        <div style="
+                            margin-top: 24px;
+                            padding-top: 24px;
+                            border-top: 1px solid #e2e8f0;
+                            text-align: center;
+                        ">
+                            <p style="color: #718096; font-size: 13px; margin-bottom: 8px;">
+                                <i class="fas fa-info-circle" style="color: #667eea;"></i>
+                                Demo Credentials
+                            </p>
+                            <p style="color: #4a5568; font-size: 13px;">
+                                <strong>Username:</strong> admin<br>
+                                <strong>Password:</strong> admin123
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('afterbegin', loginHTML);
+            
+            // Handle login form
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const errorMessage = document.getElementById('errorMessage');
+                
+                // Simple validation (in real app, this would be server-side)
+                if (username === 'admin' && password === 'admin123') {
+                    // Success
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    sessionStorage.setItem('username', username);
+                    
+                    // Remove login form
+                    document.querySelector('[style*="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"]').parentElement.remove();
+                    
+                    // Show dashboard
+                    document.querySelector('.dashboard-wrapper').style.display = 'flex';
+                    document.querySelector('.mobile-sidebar-toggle').style.display = 'flex';
+                } else {
+                    // Error
+                    errorMessage.style.display = 'block';
+                    errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Username atau password salah!';
+                    
+                    // Shake animation
+                    errorMessage.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        errorMessage.style.animation = '';
+                    }, 500);
+                }
+            });
+            
+            // Add shake animation
+            const shakeStyle = document.createElement('style');
+            shakeStyle.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-10px); }
+                    75% { transform: translateX(10px); }
+                }
+            `;
+            document.head.appendChild(shakeStyle);
+        }
+
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+        const modalOverlay = document.getElementById('modalOverlay');
+
+        sidebarToggle.addEventListener('click', function() {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.toggle('collapsed');
+            }
+        });
+
+        mobileSidebarToggle.addEventListener('click', function() {
+            sidebar.classList.add('active');
+            modalOverlay.classList.add('active');
+        });
+
+        modalOverlay.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+            modalOverlay.classList.remove('active');
+        });
+
+        // Page Content Templates
+        const pageTemplates = {
+            dashboard: `
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-label">Total Views</div>
+                            <div class="stat-value">24,567</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>12% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-label">Projects</div>
+                            <div class="stat-value">48</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>8% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-label">Messages</div>
+                            <div class="stat-value">127</div>
+                            <div class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>3% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-label">Team Members</div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>2 new this month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="#" class="quick-action-card" data-page="services">
+                            <i class="fas fa-cogs"></i>
+                            <span>Manage Services</span>
+                        </a>
+                        <a href="#" class="quick-action-card" data-page="portfolio">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Manage Portfolio</span>
+                        </a>
+                        <a href="#" class="quick-action-card" data-page="team">
+                            <i class="fas fa-users"></i>
+                            <span>Manage Team</span>
+                        </a>
+                        <a href="#" class="quick-action-card" data-page="site-settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Site Settings</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Content -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Content</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-filter"></i>
+                                Filter
+                            </button>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                Add New
+                            </button>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Author</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Website Development Services</td>
+                                <td>Service</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>Jan 15, 2024</td>
+                                <td>Admin</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>E-Commerce Platform Project</td>
+                                <td>Portfolio</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>Jan 12, 2024</td>
+                                <td>Admin</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>John Doe - Lead Developer</td>
+                                <td>Team</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>Jan 10, 2024</td>
+                                <td>Admin</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `,
+            
+            services: `
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">All Services</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-filter"></i>
+                                Filter
+                            </button>
+                            <button class="btn btn-primary" id="addServiceBtn">
+                                <i class="fas fa-plus"></i>
+                                Add New Service
+                            </button>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Category</th>
+                                <th>Price Range</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Website Development</strong></td>
+                                <td>Web Services</td>
+                                <td>$2,000 - $10,000</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>Jan 15, 2024</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit edit-service-btn" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mobile App Development</strong></td>
+                                <td>Mobile Services</td>
+                                <td>$5,000 - $25,000</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>Jan 12, 2024</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit edit-service-btn" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>UI/UX Design</strong></td>
+                                <td>Design Services</td>
+                                <td>$1,500 - $8,000</td>
+                                <td><span class="status-badge draft">Draft</span></td>
+                                <td>Jan 10, 2024</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit edit-service-btn" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Digital Marketing</strong></td>
+                                <td>Marketing Services</td>
+                                <td>$1,000 - $5,000</td>
+                                <td><span class="status-badge published">Published</span></td>
+                                <td>Jan 08, 2024</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit edit-service-btn" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `,
+            
+            portfolio: `
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Portfolio Projects</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-filter"></i>
+                                Filter by Category
+                            </button>
+                            <button class="btn btn-primary" id="addPortfolioBtn">
+                                <i class="fas fa-plus"></i>
+                                Add New Project
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; padding: 24px;">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                            <div style="padding: 20px;">
+                                <h3 style="font-size: 18px; margin-bottom: 8px; color: #2d3748;">E-Commerce Platform</h3>
+                                <p style="color: #718096; font-size: 14px; margin-bottom: 12px; line-height: 1.6;">Modern online store with payment integration</p>
+                                <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                                    <span style="background: #ebf4ff; color: #667eea; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">Web Development</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="action-btn edit edit-portfolio-btn" title="Edit" style="flex: 1;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="View" style="flex: 1;">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete" style="flex: 1;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <div style="background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                            </div>
+                            <div style="padding: 20px;">
+                                <h3 style="font-size: 18px; margin-bottom: 8px; color: #2d3748;">Fitness Tracking App</h3>
+                                <p style="color: #718096; font-size: 14px; margin-bottom: 12px; line-height: 1.6;">Mobile app for health and fitness tracking</p>
+                                <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                                    <span style="background: #e6fffa; color: #38b2ac; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">Mobile App</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="action-btn edit edit-portfolio-btn" title="Edit" style="flex: 1;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="View" style="flex: 1;">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete" style="flex: 1;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <div style="background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+                            <div style="padding: 20px;">
+                                <h3 style="font-size: 18px; margin-bottom: 8px; color: #2d3748;">Corporate Website</h3>
+                                <p style="color: #718096; font-size: 14px; margin-bottom: 12px; line-height: 1.6;">Professional website for financial services</p>
+                                <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                                    <span style="background: #fff5f0; color: #ed8936; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">Web Design</span>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="action-btn edit edit-portfolio-btn" title="Edit" style="flex: 1;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn view" title="View" style="flex: 1;">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete" style="flex: 1;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            
+            team: `
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Team Members</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-filter"></i>
+                                Filter by Role
+                            </button>
+                            <button class="btn btn-primary" id="addTeamBtn">
+                                <i class="fas fa-plus"></i>
+                                Add Team Member
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; padding: 24px;">
+                        <div class="team-card">
+                            <div style="text-align: center; padding: 32px 24px;">
+                                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px; font-weight: 700;">
+                                    JD
+                                </div>
+                                <h3 style="font-size: 20px; margin-bottom: 4px; color: #2d3748;">John Doe</h3>
+                                <p style="color: #667eea; font-size: 14px; font-weight: 600; margin-bottom: 12px;">Lead Developer</p>
+                                <p style="color: #718096; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">Full-stack developer with 8+ years experience in web technologies</p>
+                                <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 20px;">
+                                    <a href="#" style="color: #667eea; font-size: 18px;"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" style="color: #667eea; font-size: 18px;"><i class="fab fa-github"></i></a>
+                                    <a href="#" style="color: #667eea; font-size: 18px;"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="action-btn edit edit-team-btn" title="Edit" style="flex: 1;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete" style="flex: 1;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div style="text-align: center; padding: 32px 24px;">
+                                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px; font-weight: 700;">
+                                    JS
+                                </div>
+                                <h3 style="font-size: 20px; margin-bottom: 4px; color: #2d3748;">Jane Smith</h3>
+                                <p style="color: #38b2ac; font-size: 14px; font-weight: 600; margin-bottom: 12px;">UI/UX Designer</p>
+                                <p style="color: #718096; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">Creative designer specializing in user experience and interface design</p>
+                                <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 20px;">
+                                    <a href="#" style="color: #38b2ac; font-size: 18px;"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" style="color: #38b2ac; font-size: 18px;"><i class="fab fa-dribbble"></i></a>
+                                    <a href="#" style="color: #38b2ac; font-size: 18px;"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="action-btn edit edit-team-btn" title="Edit" style="flex: 1;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete" style="flex: 1;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-card">
+                            <div style="text-align: center; padding: 32px 24px;">
+                                <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px; font-weight: 700;">
+                                    MB
+                                </div>
+                                <h3 style="font-size: 20px; margin-bottom: 4px; color: #2d3748;">Mike Brown</h3>
+                                <p style="color: #ed8936; font-size: 14px; font-weight: 600; margin-bottom: 12px;">Project Manager</p>
+                                <p style="color: #718096; font-size: 13px; line-height: 1.6; margin-bottom: 16px;">Experienced PM with proven track record in agile methodologies</p>
+                                <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 20px;">
+                                    <a href="#" style="color: #ed8936; font-size: 18px;"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" style="color: #ed8936; font-size: 18px;"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" style="color: #ed8936; font-size: 18px;"><i class="fas fa-envelope"></i></a>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="action-btn edit edit-team-btn" title="Edit" style="flex: 1;">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete" title="Delete" style="flex: 1;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        // Menu Navigation
+        const menuItems = document.querySelectorAll('.menu-item');
+        const contentArea = document.querySelector('.content-area');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                menuItems.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Close mobile sidebar
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                    modalOverlay.classList.remove('active');
+                }
+                
+                // Update page title
+                const pageName = this.querySelector('span').textContent;
+                const pageKey = this.dataset.page;
+                document.querySelector('.page-title h1').textContent = pageName;
+                
+                // Update breadcrumb
+                const breadcrumb = document.querySelector('.breadcrumb');
+                breadcrumb.innerHTML = `
+                    <span>Home</span>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>${pageName}</span>
+                `;
+                
+                // Load page content
+                if (pageTemplates[pageKey]) {
+                    contentArea.innerHTML = pageTemplates[pageKey];
+                    initializePageButtons();
+                }
+            });
+        });
+        
+        // Quick action cards navigation
+        document.addEventListener('click', function(e) {
+            const quickAction = e.target.closest('.quick-action-card');
+            if (quickAction) {
+                e.preventDefault();
+                const pageKey = quickAction.dataset.page;
+                const menuItem = document.querySelector(`.menu-item[data-page="${pageKey}"]`);
+                if (menuItem) {
+                    menuItem.click();
+                }
+            }
+        });
+        
+        // Initialize page-specific buttons
+        function initializePageButtons() {
+            // Add Service button
+            const addServiceBtn = document.getElementById('addServiceBtn');
+            if (addServiceBtn) {
+                addServiceBtn.addEventListener('click', showServiceForm);
+            }
+            
+            // Edit Service buttons
+            document.querySelectorAll('.edit-service-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showServiceForm('edit');
+                });
+            });
+            
+            // Add Portfolio button
+            const addPortfolioBtn = document.getElementById('addPortfolioBtn');
+            if (addPortfolioBtn) {
+                addPortfolioBtn.addEventListener('click', showPortfolioForm);
+            }
+            
+            // Edit Portfolio buttons
+            document.querySelectorAll('.edit-portfolio-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showPortfolioForm('edit');
+                });
+            });
+            
+            // Add Team button
+            const addTeamBtn = document.getElementById('addTeamBtn');
+            if (addTeamBtn) {
+                addTeamBtn.addEventListener('click', showTeamForm);
+            }
+            
+            // Edit Team buttons
+            document.querySelectorAll('.edit-team-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showTeamForm('edit');
+                });
+            });
+        }
+        
+        // Show Service Form
+        function showServiceForm(mode = 'add') {
+            const formHTML = `
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;" id="serviceFormModal">
+                    <div style="background: white; border-radius: 16px; max-width: 700px; width: 100%; max-height: 90%; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                        <div style="padding: 24px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1;">
+                            <h2 style="font-size: 24px; color: #2d3748; display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-cogs" style="color: #667eea;"></i>
+                                ${mode === 'add' ? 'Add New Service' : 'Edit Service'}
+                            </h2>
+                            <button onclick="document.getElementById('serviceFormModal').remove()" style="background: none; border: none; font-size: 24px; color: #718096; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all 0.3s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='none'">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <form id="serviceForm" style="padding: 24px;">
+                            <div style="display: grid; gap: 20px;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-heading" style="margin-right: 8px; color: #667eea;"></i>
+                                        Service Name *
+                                    </label>
+                                    <input type="text" name="serviceName" value="${mode === 'edit' ? 'Website Development' : ''}" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="Enter service name">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-tag" style="margin-right: 8px; color: #667eea;"></i>
+                                        Category *
+                                    </label>
+                                    <select name="category" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                        <option value="">Select category</option>
+                                        <option value="web" ${mode === 'edit' ? 'selected' : ''}>Web Services</option>
+                                        <option value="mobile">Mobile Services</option>
+                                        <option value="design">Design Services</option>
+                                        <option value="marketing">Marketing Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fas fa-dollar-sign" style="margin-right: 8px; color: #667eea;"></i>
+                                            Min Price
+                                        </label>
+                                        <input type="number" name="minPrice" value="${mode === 'edit' ? '2000' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="2000">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fas fa-dollar-sign" style="margin-right: 8px; color: #667eea;"></i>
+                                            Max Price
+                                        </label>
+                                        <input type="number" name="maxPrice" value="${mode === 'edit' ? '10000' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="10000">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-align-left" style="margin-right: 8px; color: #667eea;"></i>
+                                        Description *
+                                    </label>
+                                    <textarea name="description" rows="4" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; resize: vertical;" placeholder="Describe the service...">${mode === 'edit' ? 'Professional website development services including design, development, and deployment.' : ''}</textarea>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-list" style="margin-right: 8px; color: #667eea;"></i>
+                                        Features (one per line)
+                                    </label>
+                                    <textarea name="features" rows="5" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; resize: vertical;" placeholder="Responsive Design&#10;SEO Optimization&#10;Custom Development">${mode === 'edit' ? 'Responsive Design\nSEO Optimization\nCustom Development\nContent Management System' : ''}</textarea>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-toggle-on" style="margin-right: 8px; color: #667eea;"></i>
+                                        Status
+                                    </label>
+                                    <select name="status" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                        <option value="published" ${mode === 'edit' ? 'selected' : ''}>Published</option>
+                                        <option value="draft">Draft</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e2e8f0;">
+                                <button type="button" onclick="document.getElementById('serviceFormModal').remove()" class="btn btn-secondary" style="flex: 1;">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                    <i class="fas fa-save"></i>
+                                    ${mode === 'add' ? 'Add Service' : 'Save Changes'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', formHTML);
+            
+            document.getElementById('serviceForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Handle form submission
+                document.getElementById('serviceFormModal').remove();
+                showSuccessToast(mode === 'add' ? 'Service added successfully!' : 'Service updated successfully!');
+            });
+        }
+        
+        // Show Portfolio Form
+        function showPortfolioForm(mode = 'add') {
+            const formHTML = `
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;" id="portfolioFormModal">
+                    <div style="background: white; border-radius: 16px; max-width: 700px; width: 100%; max-height: 90%; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                        <div style="padding: 24px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1;">
+                            <h2 style="font-size: 24px; color: #2d3748; display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-briefcase" style="color: #667eea;"></i>
+                                ${mode === 'add' ? 'Add New Project' : 'Edit Project'}
+                            </h2>
+                            <button onclick="document.getElementById('portfolioFormModal').remove()" style="background: none; border: none; font-size: 24px; color: #718096; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all 0.3s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='none'">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <form id="portfolioForm" style="padding: 24px;">
+                            <div style="display: grid; gap: 20px;">
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-heading" style="margin-right: 8px; color: #667eea;"></i>
+                                        Project Name *
+                                    </label>
+                                    <input type="text" name="projectName" value="${mode === 'edit' ? 'E-Commerce Platform' : ''}" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="Enter project name">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-building" style="margin-right: 8px; color: #667eea;"></i>
+                                        Client Name
+                                    </label>
+                                    <input type="text" name="clientName" value="${mode === 'edit' ? 'Tech Solutions Inc.' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="Enter client name">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-tag" style="margin-right: 8px; color: #667eea;"></i>
+                                        Category *
+                                    </label>
+                                    <select name="category" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                        <option value="">Select category</option>
+                                        <option value="web" ${mode === 'edit' ? 'selected' : ''}>Web Development</option>
+                                        <option value="mobile">Mobile App</option>
+                                        <option value="design">Web Design</option>
+                                        <option value="branding">Branding</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fas fa-calendar" style="margin-right: 8px; color: #667eea;"></i>
+                                            Start Date
+                                        </label>
+                                        <input type="date" name="startDate" value="${mode === 'edit' ? '2023-10-01' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fas fa-calendar-check" style="margin-right: 8px; color: #667eea;"></i>
+                                            End Date
+                                        </label>
+                                        <input type="date" name="endDate" value="${mode === 'edit' ? '2024-01-15' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-align-left" style="margin-right: 8px; color: #667eea;"></i>
+                                        Description *
+                                    </label>
+                                    <textarea name="description" rows="4" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; resize: vertical;" placeholder="Describe the project...">${mode === 'edit' ? 'A comprehensive e-commerce platform with advanced features including payment integration, inventory management, and customer analytics.' : ''}</textarea>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-tools" style="margin-right: 8px; color: #667eea;"></i>
+                                        Technologies Used (comma separated)
+                                    </label>
+                                    <input type="text" name="technologies" value="${mode === 'edit' ? 'React, Node.js, MongoDB, Stripe' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="React, Node.js, MongoDB">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-link" style="margin-right: 8px; color: #667eea;"></i>
+                                        Project URL
+                                    </label>
+                                    <input type="url" name="projectUrl" value="${mode === 'edit' ? 'https://example.com' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="https://project-url.com">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-toggle-on" style="margin-right: 8px; color: #667eea;"></i>
+                                        Featured
+                                    </label>
+                                    <select name="featured" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                        <option value="no">No</option>
+                                        <option value="yes" ${mode === 'edit' ? 'selected' : ''}>Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e2e8f0;">
+                                <button type="button" onclick="document.getElementById('portfolioFormModal').remove()" class="btn btn-secondary" style="flex: 1;">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                    <i class="fas fa-save"></i>
+                                    ${mode === 'add' ? 'Add Project' : 'Save Changes'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', formHTML);
+            
+            document.getElementById('portfolioForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                document.getElementById('portfolioFormModal').remove();
+                showSuccessToast(mode === 'add' ? 'Project added successfully!' : 'Project updated successfully!');
+            });
+        }
+        
+        // Show Team Form
+        function showTeamForm(mode = 'add') {
+            const formHTML = `
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;" id="teamFormModal">
+                    <div style="background: white; border-radius: 16px; max-width: 700px; width: 100%; max-height: 90%; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                        <div style="padding: 24px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1;">
+                            <h2 style="font-size: 24px; color: #2d3748; display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-users" style="color: #667eea;"></i>
+                                ${mode === 'add' ? 'Add Team Member' : 'Edit Team Member'}
+                            </h2>
+                            <button onclick="document.getElementById('teamFormModal').remove()" style="background: none; border: none; font-size: 24px; color: #718096; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: all 0.3s;" onmouseover="this.style.background='#f7fafc'" onmouseout="this.style.background='none'">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <form id="teamForm" style="padding: 24px;">
+                            <div style="display: grid; gap: 20px;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fas fa-user" style="margin-right: 8px; color: #667eea;"></i>
+                                            First Name *
+                                        </label>
+                                        <input type="text" name="firstName" value="${mode === 'edit' ? 'John' : ''}" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="John">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fas fa-user" style="margin-right: 8px; color: #667eea;"></i>
+                                            Last Name *
+                                        </label>
+                                        <input type="text" name="lastName" value="${mode === 'edit' ? 'Doe' : ''}" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="Doe">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-briefcase" style="margin-right: 8px; color: #667eea;"></i>
+                                        Position *
+                                    </label>
+                                    <input type="text" name="position" value="${mode === 'edit' ? 'Lead Developer' : ''}" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="Lead Developer">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-envelope" style="margin-right: 8px; color: #667eea;"></i>
+                                        Email *
+                                    </label>
+                                    <input type="email" name="email" value="${mode === 'edit' ? 'john.doe@company.com' : ''}" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="john.doe@company.com">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-phone" style="margin-right: 8px; color: #667eea;"></i>
+                                        Phone Number
+                                    </label>
+                                    <input type="tel" name="phone" value="${mode === 'edit' ? '+1 234 567 8900' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="+1 234 567 8900">
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-align-left" style="margin-right: 8px; color: #667eea;"></i>
+                                        Bio *
+                                    </label>
+                                    <textarea name="bio" rows="3" required style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; resize: vertical;" placeholder="Brief bio...">${mode === 'edit' ? 'Full-stack developer with 8+ years experience in web technologies' : ''}</textarea>
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fab fa-linkedin" style="margin-right: 8px; color: #667eea;"></i>
+                                            LinkedIn URL
+                                        </label>
+                                        <input type="url" name="linkedin" value="${mode === 'edit' ? 'https://linkedin.com/in/johndoe' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="https://linkedin.com/in/username">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                            <i class="fab fa-github" style="margin-right: 8px; color: #667eea;"></i>
+                                            GitHub URL
+                                        </label>
+                                        <input type="url" name="github" value="${mode === 'edit' ? 'https://github.com/johndoe' : ''}" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;" placeholder="https://github.com/username">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-palette" style="margin-right: 8px; color: #667eea;"></i>
+                                        Avatar Color
+                                    </label>
+                                    <select name="avatarColor" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                        <option value="purple" ${mode === 'edit' ? 'selected' : ''}>Purple</option>
+                                        <option value="teal">Teal</option>
+                                        <option value="orange">Orange</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="red">Red</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 8px; color: #4a5568; font-weight: 600; font-size: 14px;">
+                                        <i class="fas fa-toggle-on" style="margin-right: 8px; color: #667eea;"></i>
+                                        Status
+                                    </label>
+                                    <select name="status" style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px;">
+                                        <option value="active" ${mode === 'edit' ? 'selected' : ''}>Active</option>
+                                        <option value="inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid #e2e8f0;">
+                                <button type="button" onclick="document.getElementById('teamFormModal').remove()" class="btn btn-secondary" style="flex: 1;">
+                                    <i class="fas fa-times"></i>
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                    <i class="fas fa-save"></i>
+                                    ${mode === 'add' ? 'Add Member' : 'Save Changes'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', formHTML);
+            
+            document.getElementById('teamForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                document.getElementById('teamFormModal').remove();
+                showSuccessToast(mode === 'add' ? 'Team member added successfully!' : 'Team member updated successfully!');
+            });
+        }
+        
+        // Show success toast
+        function showSuccessToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 24px;
+                right: 24px;
+                background: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                z-index: 99999;
+                animation: slideIn 0.3s ease-out;
+            `;
+            toast.innerHTML = `
+                <div style="width: 40px; height: 40px; background: #c6f6d5; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #22543d;">
+                    <i class="fas fa-check"></i>
+                </div>
+                <span style="color: #2d3748; font-weight: 600;">${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // Add animations
+        const animStyle = document.createElement('style');
+        animStyle.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(400px); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(400px); opacity: 0; }
+            }
+            .portfolio-card, .team-card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                transition: all 0.3s;
+            }
+            .portfolio-card:hover, .team-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+            }
+        `;
+        document.head.appendChild(animStyle);
+
+        // Logout
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        logoutBtn.addEventListener('click', function() {
+            // Create custom confirmation modal
+            const confirmModal = document.createElement('div');
+            confirmModal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            confirmModal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 32px;
+                    border-radius: 16px;
+                    max-width: 400px;
+                    width: 100%;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <h3 style="margin-bottom: 16px; color: #2d3748; display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-sign-out-alt" style="color: #667eea;"></i>
+                        Konfirmasi Logout
+                    </h3>
+                    <p style="color: #4a5568; line-height: 1.6; margin-bottom: 24px;">
+                        Apakah Anda yakin ingin keluar dari admin panel?
+                    </p>
+                    <div style="display: flex; gap: 12px;">
+                        <button id="cancelLogout" style="
+                            flex: 1;
+                            padding: 12px;
+                            background: #f7fafc;
+                            color: #4a5568;
+                            border: 2px solid #e2e8f0;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">Batal</button>
+                        <button id="confirmLogout" style="
+                            flex: 1;
+                            padding: 12px;
+                            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                            color: white;
+                            border: none;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">Ya, Logout</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(confirmModal);
+            
+            document.getElementById('cancelLogout').addEventListener('click', function() {
+                confirmModal.remove();
+            });
+            
+            document.getElementById('confirmLogout').addEventListener('click', function() {
+                sessionStorage.removeItem('isLoggedIn');
+                sessionStorage.removeItem('username');
+                window.location.href = 'admin-login.html';
+            });
+            
+            confirmModal.addEventListener('click', function(e) {
+                if (e.target === confirmModal) {
+                    confirmModal.remove();
+                }
+            });
+        });
+
+        // Action Buttons
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const action = this.classList.contains('view') ? 'View' : 
+                              this.classList.contains('edit') ? 'Edit' : 'Delete';
+                const row = this.closest('tr');
+                const title = row.querySelector('td:first-child').textContent;
+                
+                if (action === 'Delete') {
+                    // Create delete confirmation modal
+                    const deleteModal = document.createElement('div');
+                    deleteModal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0,0,0,0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 9999;
+                        padding: 20px;
+                    `;
+                    
+                    deleteModal.innerHTML = `
+                        <div style="
+                            background: white;
+                            padding: 32px;
+                            border-radius: 16px;
+                            max-width: 400px;
+                            width: 100%;
+                            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        ">
+                            <h3 style="margin-bottom: 16px; color: #2d3748; display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-exclamation-triangle" style="color: #f56565;"></i>
+                                Konfirmasi Hapus
+                            </h3>
+                            <p style="color: #4a5568; line-height: 1.6; margin-bottom: 24px;">
+                                Apakah Anda yakin ingin menghapus "<strong>${title}</strong>"?<br>
+                                Tindakan ini tidak dapat dibatalkan.
+                            </p>
+                            <div style="display: flex; gap: 12px;">
+                                <button id="cancelDelete" style="
+                                    flex: 1;
+                                    padding: 12px;
+                                    background: #f7fafc;
+                                    color: #4a5568;
+                                    border: 2px solid #e2e8f0;
+                                    border-radius: 8px;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                ">Batal</button>
+                                <button id="confirmDelete" style="
+                                    flex: 1;
+                                    padding: 12px;
+                                    background: #f56565;
+                                    color: white;
+                                    border: none;
+                                    border-radius: 8px;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                ">Ya, Hapus</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(deleteModal);
+                    
+                    document.getElementById('cancelDelete').addEventListener('click', function() {
+                        deleteModal.remove();
+                    });
+                    
+                    document.getElementById('confirmDelete').addEventListener('click', function() {
+                        row.style.animation = 'fadeOut 0.3s';
+                        setTimeout(() => {
+                            row.remove();
+                            deleteModal.remove();
+                        }, 300);
+                    });
+                    
+                    deleteModal.addEventListener('click', function(e) {
+                        if (e.target === deleteModal) {
+                            deleteModal.remove();
+                        }
+                    });
+                } else {
+                    console.log(`${action} action for: ${title}`);
+                }
+            });
+        });
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Notification button
+        document.querySelector('.notification-btn').addEventListener('click', function() {
+            console.log('Show notifications');
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            console.log('Searching for:', searchTerm);
+            // Implement search logic here
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a075e446457d4a0',t:'MTc2MzQ2Nzg2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
