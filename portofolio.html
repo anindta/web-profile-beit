@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="id">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Company Profile</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Company Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
         body {
             box-sizing: border-box;
         }
@@ -16,7 +17,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #2d3748;
@@ -329,6 +331,7 @@
                 transform: translateY(-50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -528,7 +531,8 @@
             margin-bottom: 20px;
         }
 
-        .footer-section p, .footer-section a {
+        .footer-section p,
+        .footer-section a {
             color: #cbd5e0;
             text-decoration: none;
             display: block;
@@ -632,263 +636,303 @@
             }
         }
     </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <div class="page-wrapper"><!-- Navbar -->
-   <nav class="navbar">
-    <div class="container"><a href="index.html" class="logo"> <i class="fas fa-rocket"></i> <span>PT Inovasi Digital</span> </a>
-     <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
-     </div>
-     <ul class="nav-menu" id="navMenu">
-     <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/service.html">Services</a></li>
-      <li><a href="/portofolio.html" class="active">Portfolio</a></li>
-      <li><a href="/team.html">Team</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-     </ul>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page-wrapper"><!-- Navbar -->
+        <nav class="navbar">
+            <div class="container"><a href="#" class="logo">
+                    <img src="img/logo.png" alt="Logo" style="width:96px; height:auto; vertical-align:middle; margin-right:8px;">
+
+                    <span>PT Inovasi Digital</span>
+                </a>
+                <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/web-profile-beit/index.html">Home</a></li>
+                    <li><a href="/web-profile-beit/about.html">About</a></li>
+                    <li><a href="/web-profile-beit/service.html">Services</a></li>
+                    <li><a href="/web-profile-beit/portofolio.html" class="active">Portfolio</a></li>
+                    <li><a href="/web-profile-beit/team.html">Team</a></li>
+                    <li><a href="/web-profile-beit/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav><!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Portfolio Kami</h1>
+                <p>Karya terbaik yang telah kami ciptakan untuk klien di berbagai industri</p>
+            </div>
+        </section><!-- Portfolio Section -->
+        <section class="section">
+            <div class="container"><!-- Filter -->
+                <div class="portfolio-filter"><button class="filter-btn active" data-filter="all">Semua Project</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button> <button class="filter-btn"
+                        data-filter="mobile">Mobile Apps</button> <button class="filter-btn" data-filter="design">UI/UX
+                        Design</button> <button class="filter-btn" data-filter="cloud">Cloud Solutions</button>
+                </div><!-- Portfolio Grid -->
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="web" onclick="openModal('project1')">
+                        <div class="portfolio-image"><i class="fas fa-shopping-cart"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Web Development</span>
+                            <h3>E-Commerce Platform</h3>
+                            <p>Platform e-commerce lengkap dengan sistem pembayaran terintegrasi dan dashboard analytics
+                            </p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Retail Nusantara</span>
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="mobile" onclick="openModal('project2')">
+                        <div class="portfolio-image"><i class="fas fa-mobile-alt"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Mobile Apps</span>
+                            <h3>Banking Mobile App</h3>
+                            <p>Aplikasi mobile banking dengan fitur keamanan tinggi dan user experience yang intuitif
+                            </p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> Bank Digital Indonesia</span>
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="cloud" onclick="openModal('project3')">
+                        <div class="portfolio-image"><i class="fas fa-cloud"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Cloud Solutions</span>
+                            <h3>Cloud Migration Project</h3>
+                            <p>Migrasi infrastruktur perusahaan ke AWS dengan zero downtime dan optimasi cost</p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Manufaktur Global</span>
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web" onclick="openModal('project4')">
+                        <div class="portfolio-image"><i class="fas fa-graduation-cap"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Web Development</span>
+                            <h3>Learning Management System</h3>
+                            <p>Platform e-learning dengan fitur video conferencing, assignment tracking, dan grading
+                                system</p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> Universitas Teknologi</span>
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="design" onclick="openModal('project5')">
+                        <div class="portfolio-image"><i class="fas fa-palette"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">UI/UX Design</span>
+                            <h3>Corporate Dashboard Design</h3>
+                            <p>Redesign dashboard analytics dengan fokus pada data visualization dan user experience</p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Tech Solutions</span>
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="mobile" onclick="openModal('project6')">
+                        <div class="portfolio-image"><i class="fas fa-heartbeat"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Mobile Apps</span>
+                            <h3>Healthcare App</h3>
+                            <p>Aplikasi kesehatan dengan fitur telemedicine, appointment booking, dan medical records
+                            </p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> RS Sehat Sentosa</span>
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web" onclick="openModal('project7')">
+                        <div class="portfolio-image"><i class="fas fa-newspaper"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Web Development</span>
+                            <h3>News Portal</h3>
+                            <p>Portal berita online dengan CMS custom, real-time updates, dan advanced search features
+                            </p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> Media Indonesia</span>
+                                <span><i class="fas fa-calendar"></i> 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="design" onclick="openModal('project8')">
+                        <div class="portfolio-image"><i class="fas fa-paint-brush"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">UI/UX Design</span>
+                            <h3>Mobile App Redesign</h3>
+                            <p>Redesign complete mobile app dengan peningkatan user engagement hingga 65%</p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> Startup Indonesia</span>
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="cloud" onclick="openModal('project9')">
+                        <div class="portfolio-image"><i class="fas fa-server"></i>
+                            <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-content"><span class="portfolio-category">Cloud Solutions</span>
+                            <h3>DevOps Implementation</h3>
+                            <p>Setup complete CI/CD pipeline dengan Docker, Kubernetes, dan monitoring system</p>
+                            <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Digital Startup</span>
+                                <span><i class="fas fa-calendar"></i> 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Stats -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">
+                        300+
+                    </div>
+                    <div class="stat-label">
+                        Proyek Selesai
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        150+
+                    </div>
+                    <div class="stat-label">
+                        Klien Puas
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        25+
+                    </div>
+                    <div class="stat-label">
+                        Penghargaan
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        98%
+                    </div>
+                    <div class="stat-label">
+                        Success Rate
+                    </div>
+                </div>
+            </div>
+        </section><!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>PT Inovasi Digital</h3>
+                        <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital
+                            perusahaan Anda.</p>
+                        <div class="social-links"><a href="#" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i
+                                    class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a
+                            href="services.html">Services</a> <a href="team.html">Team</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile
+                            Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT
+                            Consulting</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
+                        <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                        <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
+                </div>
+            </div>
+        </footer><!-- Modal -->
+        <div class="modal" id="projectModal">
+            <div class="modal-content"><button class="modal-close" onclick="closeModal()"> <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-image" id="modalImage"><i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="modal-body"><span class="portfolio-category" id="modalCategory">Web Development</span>
+                    <h2 id="modalTitle">E-Commerce Platform</h2>
+                    <p id="modalDescription">Platform e-commerce lengkap yang kami kembangkan dengan fitur modern dan
+                        performa tinggi. Sistem ini mencakup manajemen produk, keranjang belanja, sistem pembayaran
+                        terintegrasi dengan berbagai gateway, dashboard analytics real-time, dan sistem notifikasi
+                        otomatis.</p>
+                    <div class="modal-details">
+                        <div class="modal-detail-item">
+                            <div class="modal-detail-label">
+                                Client
+                            </div>
+                            <div class="modal-detail-value" id="modalClient">
+                                PT Retail Nusantara
+                            </div>
+                        </div>
+                        <div class="modal-detail-item">
+                            <div class="modal-detail-label">
+                                Tanggal
+                            </div>
+                            <div class="modal-detail-value" id="modalDate">
+                                Januari 2024
+                            </div>
+                        </div>
+                        <div class="modal-detail-item">
+                            <div class="modal-detail-label">
+                                Kategori
+                            </div>
+                            <div class="modal-detail-value" id="modalCat">
+                                Web Development
+                            </div>
+                        </div>
+                        <div class="modal-detail-item">
+                            <div class="modal-detail-label">
+                                Durasi
+                            </div>
+                            <div class="modal-detail-value" id="modalDuration">
+                                4 Bulan
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-technologies">
+                        <h4>Teknologi yang Digunakan</h4>
+                        <div class="tech-tags" id="modalTech"><span class="tech-tag">React</span> <span
+                                class="tech-tag">Node.js</span> <span class="tech-tag">MongoDB</span> <span
+                                class="tech-tag">AWS</span> <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div><button class="btn" onclick="closeModal()"> <i class="fas fa-times"></i> Tutup </button>
+                </div>
+            </div>
+        </div>
     </div>
-   </nav><!-- Page Header -->
-   <section class="page-header">
-    <div class="container">
-     <h1>Portfolio Kami</h1>
-     <p>Karya terbaik yang telah kami ciptakan untuk klien di berbagai industri</p>
-    </div>
-   </section><!-- Portfolio Section -->
-   <section class="section">
-    <div class="container"><!-- Filter -->
-     <div class="portfolio-filter"><button class="filter-btn active" data-filter="all">Semua Project</button> <button class="filter-btn" data-filter="web">Web Development</button> <button class="filter-btn" data-filter="mobile">Mobile Apps</button> <button class="filter-btn" data-filter="design">UI/UX Design</button> <button class="filter-btn" data-filter="cloud">Cloud Solutions</button>
-     </div><!-- Portfolio Grid -->
-     <div class="portfolio-grid">
-      <div class="portfolio-item" data-category="web" onclick="openModal('project1')">
-       <div class="portfolio-image"><i class="fas fa-shopping-cart"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Web Development</span>
-        <h3>E-Commerce Platform</h3>
-        <p>Platform e-commerce lengkap dengan sistem pembayaran terintegrasi dan dashboard analytics</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Retail Nusantara</span> <span><i class="fas fa-calendar"></i> 2024</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="mobile" onclick="openModal('project2')">
-       <div class="portfolio-image"><i class="fas fa-mobile-alt"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Mobile Apps</span>
-        <h3>Banking Mobile App</h3>
-        <p>Aplikasi mobile banking dengan fitur keamanan tinggi dan user experience yang intuitif</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> Bank Digital Indonesia</span> <span><i class="fas fa-calendar"></i> 2023</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="cloud" onclick="openModal('project3')">
-       <div class="portfolio-image"><i class="fas fa-cloud"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Cloud Solutions</span>
-        <h3>Cloud Migration Project</h3>
-        <p>Migrasi infrastruktur perusahaan ke AWS dengan zero downtime dan optimasi cost</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Manufaktur Global</span> <span><i class="fas fa-calendar"></i> 2023</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="web" onclick="openModal('project4')">
-       <div class="portfolio-image"><i class="fas fa-graduation-cap"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Web Development</span>
-        <h3>Learning Management System</h3>
-        <p>Platform e-learning dengan fitur video conferencing, assignment tracking, dan grading system</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> Universitas Teknologi</span> <span><i class="fas fa-calendar"></i> 2024</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="design" onclick="openModal('project5')">
-       <div class="portfolio-image"><i class="fas fa-palette"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">UI/UX Design</span>
-        <h3>Corporate Dashboard Design</h3>
-        <p>Redesign dashboard analytics dengan fokus pada data visualization dan user experience</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Tech Solutions</span> <span><i class="fas fa-calendar"></i> 2023</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="mobile" onclick="openModal('project6')">
-       <div class="portfolio-image"><i class="fas fa-heartbeat"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Mobile Apps</span>
-        <h3>Healthcare App</h3>
-        <p>Aplikasi kesehatan dengan fitur telemedicine, appointment booking, dan medical records</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> RS Sehat Sentosa</span> <span><i class="fas fa-calendar"></i> 2024</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="web" onclick="openModal('project7')">
-       <div class="portfolio-image"><i class="fas fa-newspaper"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Web Development</span>
-        <h3>News Portal</h3>
-        <p>Portal berita online dengan CMS custom, real-time updates, dan advanced search features</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> Media Indonesia</span> <span><i class="fas fa-calendar"></i> 2023</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="design" onclick="openModal('project8')">
-       <div class="portfolio-image"><i class="fas fa-paint-brush"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">UI/UX Design</span>
-        <h3>Mobile App Redesign</h3>
-        <p>Redesign complete mobile app dengan peningkatan user engagement hingga 65%</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> Startup Indonesia</span> <span><i class="fas fa-calendar"></i> 2024</span>
-        </div>
-       </div>
-      </div>
-      <div class="portfolio-item" data-category="cloud" onclick="openModal('project9')">
-       <div class="portfolio-image"><i class="fas fa-server"></i>
-        <div class="portfolio-overlay"><i class="fas fa-search-plus"></i>
-        </div>
-       </div>
-       <div class="portfolio-content"><span class="portfolio-category">Cloud Solutions</span>
-        <h3>DevOps Implementation</h3>
-        <p>Setup complete CI/CD pipeline dengan Docker, Kubernetes, dan monitoring system</p>
-        <div class="portfolio-meta"><span><i class="fas fa-user"></i> PT Digital Startup</span> <span><i class="fas fa-calendar"></i> 2024</span>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Stats -->
-   <section class="stats-section">
-    <div class="stats-grid">
-     <div class="stat-item">
-      <div class="stat-number">
-       300+
-      </div>
-      <div class="stat-label">
-       Proyek Selesai
-      </div>
-     </div>
-     <div class="stat-item">
-      <div class="stat-number">
-       150+
-      </div>
-      <div class="stat-label">
-       Klien Puas
-      </div>
-     </div>
-     <div class="stat-item">
-      <div class="stat-number">
-       25+
-      </div>
-      <div class="stat-label">
-       Penghargaan
-      </div>
-     </div>
-     <div class="stat-item">
-      <div class="stat-number">
-       98%
-      </div>
-      <div class="stat-label">
-       Success Rate
-      </div>
-     </div>
-    </div>
-   </section><!-- Footer -->
-   <footer class="footer">
-    <div class="container">
-     <div class="footer-grid">
-      <div class="footer-section">
-       <h3>PT Inovasi Digital</h3>
-       <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital perusahaan Anda.</p>
-       <div class="social-links"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-       </div>
-      </div>
-      <div class="footer-section">
-       <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a href="services.html">Services</a> <a href="team.html">Team</a>
-      </div>
-      <div class="footer-section">
-       <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT Consulting</a>
-      </div>
-      <div class="footer-section">
-       <h3>Contact</h3>
-       <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
-       <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
-       <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
-      </div>
-     </div>
-     <div class="footer-bottom">
-      <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
-     </div>
-    </div>
-   </footer><!-- Modal -->
-   <div class="modal" id="projectModal">
-    <div class="modal-content"><button class="modal-close" onclick="closeModal()"> <i class="fas fa-times"></i> </button>
-     <div class="modal-image" id="modalImage"><i class="fas fa-shopping-cart"></i>
-     </div>
-     <div class="modal-body"><span class="portfolio-category" id="modalCategory">Web Development</span>
-      <h2 id="modalTitle">E-Commerce Platform</h2>
-      <p id="modalDescription">Platform e-commerce lengkap yang kami kembangkan dengan fitur modern dan performa tinggi. Sistem ini mencakup manajemen produk, keranjang belanja, sistem pembayaran terintegrasi dengan berbagai gateway, dashboard analytics real-time, dan sistem notifikasi otomatis.</p>
-      <div class="modal-details">
-       <div class="modal-detail-item">
-        <div class="modal-detail-label">
-         Client
-        </div>
-        <div class="modal-detail-value" id="modalClient">
-         PT Retail Nusantara
-        </div>
-       </div>
-       <div class="modal-detail-item">
-        <div class="modal-detail-label">
-         Tanggal
-        </div>
-        <div class="modal-detail-value" id="modalDate">
-         Januari 2024
-        </div>
-       </div>
-       <div class="modal-detail-item">
-        <div class="modal-detail-label">
-         Kategori
-        </div>
-        <div class="modal-detail-value" id="modalCat">
-         Web Development
-        </div>
-       </div>
-       <div class="modal-detail-item">
-        <div class="modal-detail-label">
-         Durasi
-        </div>
-        <div class="modal-detail-value" id="modalDuration">
-         4 Bulan
-        </div>
-       </div>
-      </div>
-      <div class="modal-technologies">
-       <h4>Teknologi yang Digunakan</h4>
-       <div class="tech-tags" id="modalTech"><span class="tech-tag">React</span> <span class="tech-tag">Node.js</span> <span class="tech-tag">MongoDB</span> <span class="tech-tag">AWS</span> <span class="tech-tag">Stripe</span>
-       </div>
-      </div><button class="btn" onclick="closeModal()"> <i class="fas fa-times"></i> Tutup </button>
-     </div>
-    </div>
-   </div>
-  </div>
-  <script>
+    <script>
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
@@ -901,7 +945,7 @@
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filter = btn.getAttribute('data-filter');
-                
+
                 // Update active button
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
@@ -1023,7 +1067,7 @@
         function openModal(projectId) {
             const data = projectData[projectId];
             const modal = document.getElementById('projectModal');
-            
+
             // Update modal content
             document.getElementById('modalImage').innerHTML = `<i class="fas fa-${data.icon}"></i>`;
             document.getElementById('modalCategory').textContent = data.category;
@@ -1033,13 +1077,13 @@
             document.getElementById('modalDate').textContent = data.date;
             document.getElementById('modalCat').textContent = data.cat;
             document.getElementById('modalDuration').textContent = data.duration;
-            
+
             // Update tech tags
             const techContainer = document.getElementById('modalTech');
-            techContainer.innerHTML = data.tech.map(tech => 
+            techContainer.innerHTML = data.tech.map(tech =>
                 `<span class="tech-tag">${tech}</span>`
             ).join('');
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1065,14 +1109,16 @@
         });
 
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const navMenu = document.getElementById('navMenu');
             const mobileToggle = document.querySelector('.mobile-toggle');
-            
+
             if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
                 navMenu.classList.remove('active');
             }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a069d1617bfaa34',t:'MTc2MzQ1OTk1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a069d1617bfaa34',t:'MTc2MzQ1OTk1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
 </html>

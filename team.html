@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="id">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team - Company Profile</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Company Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
         body {
             box-sizing: border-box;
         }
@@ -16,7 +17,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #2d3748;
@@ -418,6 +420,7 @@
                 transform: translateY(-50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -585,7 +588,8 @@
             margin-bottom: 20px;
         }
 
-        .footer-section p, .footer-section a {
+        .footer-section p,
+        .footer-section a {
             color: #cbd5e0;
             text-decoration: none;
             display: block;
@@ -689,299 +693,366 @@
             }
         }
     </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <div class="page-wrapper"><!-- Navbar -->
-   <nav class="navbar">
-    <div class="container"><a href="index.html" class="logo"> <i class="fas fa-rocket"></i> <span>PT Inovasi Digital</span> </a>
-     <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
-     </div>
-     <ul class="nav-menu" id="navMenu">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/service.html">Services</a></li>
-      <li><a href="/portofolio.html">Portfolio</a></li>
-      <li><a href="/team.html" class="active">Team</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-     </ul>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page-wrapper"><!-- Navbar -->
+        <nav class="navbar">
+            <div class="container"><a href="#" class="logo">
+                    <img src="img/logo.png" alt="Logo" style="width:96px; height:auto; vertical-align:middle; margin-right:8px;">
+
+                    <span>PT Inovasi Digital</span>
+                </a>
+                <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/web-profile-beit/index.html">Home</a></li>
+                    <li><a href="/web-profile-beit/about.html">About</a></li>
+                    <li><a href="/web-profile-beit/service.html">Services</a></li>
+                    <li><a href="/web-profile-beit/portofolio.html">Portfolio</a></li>
+                    <li><a href="/web-profile-beit/team.html" class="active">Team</a></li>
+                    <li><a href="/web-profile-beit/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav><!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Tim Kami</h1>
+                <p>Profesional berpengalaman yang siap mewujudkan visi digital Anda</p>
+            </div>
+        </section><!-- Leadership -->
+        <section class="section leadership-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Kepemimpinan</h2>
+                    <p>Visioner yang memimpin transformasi digital</p>
+                </div>
+                <div class="leadership-grid">
+                    <div class="team-card" onclick="openModal('member1')">
+                        <div class="team-avatar"><i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Budi Santoso</h3>
+                            <p class="team-position">Chief Executive Officer</p>
+                            <p class="team-bio">Visioner dengan 15+ tahun pengalaman dalam industri teknologi dan
+                                transformasi digital.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i
+                                        class="fab fa-twitter"></i></a> <a href="#" aria-label="Email"><i
+                                        class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member2')">
+                        <div class="team-avatar"><i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Sarah Wijaya</h3>
+                            <p class="team-position">Chief Technology Officer</p>
+                            <p class="team-bio">Expert dalam cloud architecture dan AI implementation dengan track
+                                record proyek internasional.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i
+                                        class="fab fa-twitter"></i></a> <a href="#" aria-label="GitHub"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member3')">
+                        <div class="team-avatar"><i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Ahmad Rahman</h3>
+                            <p class="team-position">Chief Operating Officer</p>
+                            <p class="team-bio">Spesialis dalam operational excellence dan strategic planning dengan
+                                pengalaman Fortune 500.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i
+                                        class="fab fa-twitter"></i></a> <a href="#" aria-label="Email"><i
+                                        class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Team Members -->
+        <section class="section team-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Tim Profesional</h2>
+                    <p>Talenta terbaik di bidangnya</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card" onclick="openModal('member4')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Rina Kusuma</h3>
+                            <p class="team-position">Lead Developer</p>
+                            <p class="team-bio">Full-stack developer dengan keahlian React, Node.js, dan cloud
+                                technologies.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member5')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>David Pratama</h3>
+                            <p class="team-position">UI/UX Designer</p>
+                            <p class="team-bio">Designer berpengalaman dengan portfolio internasional dan award-winning
+                                designs.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Dribbble"><i
+                                        class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member6')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Lisa Anggraini</h3>
+                            <p class="team-position">Project Manager</p>
+                            <p class="team-bio">Certified PMP dengan expertise dalam Agile dan delivery management.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i
+                                        class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member7')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Rizky Firmansyah</h3>
+                            <p class="team-position">DevOps Engineer</p>
+                            <p class="team-bio">Expert dalam CI/CD, containerization, dan cloud infrastructure
+                                optimization.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member8')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Maya Putri</h3>
+                            <p class="team-position">Mobile Developer</p>
+                            <p class="team-bio">Specialist dalam iOS &amp; Android development dengan React Native dan
+                                Flutter.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member9')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Andi Saputra</h3>
+                            <p class="team-position">Security Specialist</p>
+                            <p class="team-bio">Certified ethical hacker dengan fokus pada application dan
+                                infrastructure security.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i
+                                        class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member10')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Dinda Maharani</h3>
+                            <p class="team-position">Data Analyst</p>
+                            <p class="team-bio">Expert dalam data visualization, predictive analytics, dan business
+                                intelligence.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Medium"><i
+                                        class="fab fa-medium"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member11')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Fauzi Hakim</h3>
+                            <p class="team-position">QA Engineer</p>
+                            <p class="team-bio">Quality assurance expert dengan automation testing dan performance
+                                testing skills.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card" onclick="openModal('member12')">
+                        <div class="team-avatar"><i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-info">
+                            <h3>Siti Nurhaliza</h3>
+                            <p class="team-position">Marketing Manager</p>
+                            <p class="team-bio">Digital marketing strategist dengan proven track record dalam growth
+                                hacking.</p>
+                            <div class="team-social"><a href="#" aria-label="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Instagram"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Departments -->
+        <section class="section departments-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Departemen</h2>
+                    <p>Tim yang terorganisir dengan baik</p>
+                </div>
+                <div class="departments-grid">
+                    <div class="department-card">
+                        <div class="department-icon"><i class="fas fa-code"></i>
+                        </div>
+                        <h3>Engineering</h3>
+                        <p>Tim developer yang mengembangkan solusi teknologi terbaik</p><span class="team-count">25
+                            Members</span>
+                    </div>
+                    <div class="department-card">
+                        <div class="department-icon"><i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Design</h3>
+                        <p>Creative team yang menciptakan pengalaman visual memukau</p><span class="team-count">12
+                            Members</span>
+                    </div>
+                    <div class="department-card">
+                        <div class="department-icon"><i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Marketing</h3>
+                        <p>Strategist yang membangun brand dan growth digital</p><span class="team-count">10
+                            Members</span>
+                    </div>
+                    <div class="department-card">
+                        <div class="department-icon"><i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Security</h3>
+                        <p>Expert yang menjaga keamanan sistem dan data</p><span class="team-count">8 Members</span>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Join Team -->
+        <section class="section join-section">
+            <div class="container">
+                <h2>Bergabung dengan Tim Kami</h2>
+                <p>Kami selalu mencari talenta terbaik untuk bergabung dalam misi transformasi digital. Jika Anda
+                    passionate tentang teknologi dan inovasi, mari berkembang bersama kami!</p><a href="contact.html"
+                    class="btn"> <i class="fas fa-briefcase"></i> Lihat Lowongan Kerja </a>
+            </div>
+        </section><!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>PT Inovasi Digital</h3>
+                        <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital
+                            perusahaan Anda.</p>
+                        <div class="social-links"><a href="#" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i
+                                    class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a
+                            href="services.html">Services</a> <a href="team.html">Team</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile
+                            Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT
+                            Consulting</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
+                        <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                        <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
+                </div>
+            </div>
+        </footer><!-- Modal -->
+        <div class="modal" id="teamModal">
+            <div class="modal-content"><button class="modal-close" onclick="closeModal()"> <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-avatar" id="modalAvatar"><i class="fas fa-user-tie"></i>
+                </div>
+                <div class="modal-body">
+                    <h2 id="modalName">Budi Santoso</h2>
+                    <p class="team-position" id="modalPosition">Chief Executive Officer</p>
+                    <div class="modal-details">
+                        <div class="modal-detail-item"><i class="fas fa-briefcase"></i>
+                            <div class="modal-detail-text">
+                                <div class="modal-detail-label">
+                                    Pengalaman
+                                </div>
+                                <div class="modal-detail-value" id="modalExperience">
+                                    15+ Tahun
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-detail-item"><i class="fas fa-graduation-cap"></i>
+                            <div class="modal-detail-text">
+                                <div class="modal-detail-label">
+                                    Pendidikan
+                                </div>
+                                <div class="modal-detail-value" id="modalEducation">
+                                    S2 Computer Science, MIT
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-detail-item"><i class="fas fa-envelope"></i>
+                            <div class="modal-detail-text">
+                                <div class="modal-detail-label">
+                                    Email
+                                </div>
+                                <div class="modal-detail-value" id="modalEmail">
+                                    budi@inovasidigital.com
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="modal-bio" id="modalBio">Budi adalah visioner dalam industri teknologi dengan pengalaman
+                        lebih dari 15 tahun. Beliau memimpin transformasi digital di berbagai perusahaan Fortune 500
+                        sebelum mendirikan PT Inovasi Digital. Dengan keahlian dalam strategic planning dan technology
+                        innovation, Budi berkomitmen untuk membawa perusahaan menjadi leader dalam solusi digital di
+                        Indonesia.</p>
+                    <div class="modal-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#"
+                            aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-   </nav><!-- Page Header -->
-   <section class="page-header">
-    <div class="container">
-     <h1>Tim Kami</h1>
-     <p>Profesional berpengalaman yang siap mewujudkan visi digital Anda</p>
-    </div>
-   </section><!-- Leadership -->
-   <section class="section leadership-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Kepemimpinan</h2>
-      <p>Visioner yang memimpin transformasi digital</p>
-     </div>
-     <div class="leadership-grid">
-      <div class="team-card" onclick="openModal('member1')">
-       <div class="team-avatar"><i class="fas fa-user-tie"></i>
-       </div>
-       <div class="team-info">
-        <h3>Budi Santoso</h3>
-        <p class="team-position">Chief Executive Officer</p>
-        <p class="team-bio">Visioner dengan 15+ tahun pengalaman dalam industri teknologi dan transformasi digital.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member2')">
-       <div class="team-avatar"><i class="fas fa-user-tie"></i>
-       </div>
-       <div class="team-info">
-        <h3>Sarah Wijaya</h3>
-        <p class="team-position">Chief Technology Officer</p>
-        <p class="team-bio">Expert dalam cloud architecture dan AI implementation dengan track record proyek internasional.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member3')">
-       <div class="team-avatar"><i class="fas fa-user-tie"></i>
-       </div>
-       <div class="team-info">
-        <h3>Ahmad Rahman</h3>
-        <p class="team-position">Chief Operating Officer</p>
-        <p class="team-bio">Spesialis dalam operational excellence dan strategic planning dengan pengalaman Fortune 500.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Team Members -->
-   <section class="section team-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Tim Profesional</h2>
-      <p>Talenta terbaik di bidangnya</p>
-     </div>
-     <div class="team-grid">
-      <div class="team-card" onclick="openModal('member4')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Rina Kusuma</h3>
-        <p class="team-position">Lead Developer</p>
-        <p class="team-bio">Full-stack developer dengan keahlian React, Node.js, dan cloud technologies.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member5')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>David Pratama</h3>
-        <p class="team-position">UI/UX Designer</p>
-        <p class="team-bio">Designer berpengalaman dengan portfolio internasional dan award-winning designs.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member6')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Lisa Anggraini</h3>
-        <p class="team-position">Project Manager</p>
-        <p class="team-bio">Certified PMP dengan expertise dalam Agile dan delivery management.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member7')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Rizky Firmansyah</h3>
-        <p class="team-position">DevOps Engineer</p>
-        <p class="team-bio">Expert dalam CI/CD, containerization, dan cloud infrastructure optimization.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member8')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Maya Putri</h3>
-        <p class="team-position">Mobile Developer</p>
-        <p class="team-bio">Specialist dalam iOS &amp; Android development dengan React Native dan Flutter.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member9')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Andi Saputra</h3>
-        <p class="team-position">Security Specialist</p>
-        <p class="team-bio">Certified ethical hacker dengan fokus pada application dan infrastructure security.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member10')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Dinda Maharani</h3>
-        <p class="team-position">Data Analyst</p>
-        <p class="team-bio">Expert dalam data visualization, predictive analytics, dan business intelligence.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member11')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Fauzi Hakim</h3>
-        <p class="team-position">QA Engineer</p>
-        <p class="team-bio">Quality assurance expert dengan automation testing dan performance testing skills.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-       </div>
-      </div>
-      <div class="team-card" onclick="openModal('member12')">
-       <div class="team-avatar"><i class="fas fa-user"></i>
-       </div>
-       <div class="team-info">
-        <h3>Siti Nurhaliza</h3>
-        <p class="team-position">Marketing Manager</p>
-        <p class="team-bio">Digital marketing strategist dengan proven track record dalam growth hacking.</p>
-        <div class="team-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Departments -->
-   <section class="section departments-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Departemen</h2>
-      <p>Tim yang terorganisir dengan baik</p>
-     </div>
-     <div class="departments-grid">
-      <div class="department-card">
-       <div class="department-icon"><i class="fas fa-code"></i>
-       </div>
-       <h3>Engineering</h3>
-       <p>Tim developer yang mengembangkan solusi teknologi terbaik</p><span class="team-count">25 Members</span>
-      </div>
-      <div class="department-card">
-       <div class="department-icon"><i class="fas fa-palette"></i>
-       </div>
-       <h3>Design</h3>
-       <p>Creative team yang menciptakan pengalaman visual memukau</p><span class="team-count">12 Members</span>
-      </div>
-      <div class="department-card">
-       <div class="department-icon"><i class="fas fa-chart-line"></i>
-       </div>
-       <h3>Marketing</h3>
-       <p>Strategist yang membangun brand dan growth digital</p><span class="team-count">10 Members</span>
-      </div>
-      <div class="department-card">
-       <div class="department-icon"><i class="fas fa-shield-alt"></i>
-       </div>
-       <h3>Security</h3>
-       <p>Expert yang menjaga keamanan sistem dan data</p><span class="team-count">8 Members</span>
-      </div>
-     </div>
-    </div>
-   </section><!-- Join Team -->
-   <section class="section join-section">
-    <div class="container">
-     <h2>Bergabung dengan Tim Kami</h2>
-     <p>Kami selalu mencari talenta terbaik untuk bergabung dalam misi transformasi digital. Jika Anda passionate tentang teknologi dan inovasi, mari berkembang bersama kami!</p><a href="contact.html" class="btn"> <i class="fas fa-briefcase"></i> Lihat Lowongan Kerja </a>
-    </div>
-   </section><!-- Footer -->
-   <footer class="footer">
-    <div class="container">
-     <div class="footer-grid">
-      <div class="footer-section">
-       <h3>PT Inovasi Digital</h3>
-       <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital perusahaan Anda.</p>
-       <div class="social-links"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-       </div>
-      </div>
-      <div class="footer-section">
-       <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a href="services.html">Services</a> <a href="team.html">Team</a>
-      </div>
-      <div class="footer-section">
-       <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT Consulting</a>
-      </div>
-      <div class="footer-section">
-       <h3>Contact</h3>
-       <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
-       <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
-       <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
-      </div>
-     </div>
-     <div class="footer-bottom">
-      <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
-     </div>
-    </div>
-   </footer><!-- Modal -->
-   <div class="modal" id="teamModal">
-    <div class="modal-content"><button class="modal-close" onclick="closeModal()"> <i class="fas fa-times"></i> </button>
-     <div class="modal-avatar" id="modalAvatar"><i class="fas fa-user-tie"></i>
-     </div>
-     <div class="modal-body">
-      <h2 id="modalName">Budi Santoso</h2>
-      <p class="team-position" id="modalPosition">Chief Executive Officer</p>
-      <div class="modal-details">
-       <div class="modal-detail-item"><i class="fas fa-briefcase"></i>
-        <div class="modal-detail-text">
-         <div class="modal-detail-label">
-          Pengalaman
-         </div>
-         <div class="modal-detail-value" id="modalExperience">
-          15+ Tahun
-         </div>
-        </div>
-       </div>
-       <div class="modal-detail-item"><i class="fas fa-graduation-cap"></i>
-        <div class="modal-detail-text">
-         <div class="modal-detail-label">
-          Pendidikan
-         </div>
-         <div class="modal-detail-value" id="modalEducation">
-          S2 Computer Science, MIT
-         </div>
-        </div>
-       </div>
-       <div class="modal-detail-item"><i class="fas fa-envelope"></i>
-        <div class="modal-detail-text">
-         <div class="modal-detail-label">
-          Email
-         </div>
-         <div class="modal-detail-value" id="modalEmail">
-          budi@inovasidigital.com
-         </div>
-        </div>
-       </div>
-      </div>
-      <p class="modal-bio" id="modalBio">Budi adalah visioner dalam industri teknologi dengan pengalaman lebih dari 15 tahun. Beliau memimpin transformasi digital di berbagai perusahaan Fortune 500 sebelum mendirikan PT Inovasi Digital. Dengan keahlian dalam strategic planning dan technology innovation, Budi berkomitmen untuk membawa perusahaan menjadi leader dalam solusi digital di Indonesia.</p>
-      <div class="modal-social"><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      </div>
-     </div>
-    </div>
-   </div>
-  </div>
-  <script>
+    <script>
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
@@ -1102,7 +1173,7 @@
         function openModal(memberId) {
             const data = teamData[memberId];
             const modal = document.getElementById('teamModal');
-            
+
             // Update modal content
             document.getElementById('modalAvatar').innerHTML = `<i class="fas fa-${data.icon}"></i>`;
             document.getElementById('modalName').textContent = data.name;
@@ -1111,7 +1182,7 @@
             document.getElementById('modalEducation').textContent = data.education;
             document.getElementById('modalEmail').textContent = data.email;
             document.getElementById('modalBio').textContent = data.bio;
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1137,14 +1208,16 @@
         });
 
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const navMenu = document.getElementById('navMenu');
             const mobileToggle = document.querySelector('.mobile-toggle');
-            
+
             if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
                 navMenu.classList.remove('active');
             }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a06b45725d4d8ca',t:'MTc2MzQ2MDkwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a06b45725d4d8ca',t:'MTc2MzQ2MDkwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
 </html>

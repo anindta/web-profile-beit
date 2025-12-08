@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="id">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services - Company Profile</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Company Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
         body {
             box-sizing: border-box;
         }
@@ -16,7 +17,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #2d3748;
@@ -556,7 +558,8 @@
             margin-bottom: 20px;
         }
 
-        .footer-section p, .footer-section a {
+        .footer-section p,
+        .footer-section a {
             color: #cbd5e0;
             text-decoration: none;
             display: block;
@@ -660,290 +663,320 @@
             }
         }
     </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <div class="page-wrapper"><!-- Navbar -->
-   <nav class="navbar">
-    <div class="container"><a href="index.html" class="logo"> <i class="fas fa-rocket"></i> <span>PT Inovasi Digital</span> </a>
-     <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
-     </div>
-     <ul class="nav-menu" id="navMenu">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/service.html" class="active">Services</a></li>
-      <li><a href="/portofolio.html">Portfolio</a></li>
-      <li><a href="/team.html">Team</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-     </ul>
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page-wrapper"><!-- Navbar -->
+        <nav class="navbar">
+            <div class="container"><a href="#" class="logo">
+                    <img src="img/logo.png" alt="Logo" style="width:96px; height:auto; vertical-align:middle; margin-right:8px;">
+
+                    <span>PT Inovasi Digital</span>
+                </a>
+                <div class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/web-profile-beit/index.html">Home</a></li>
+                    <li><a href="/web-profile-beit/about.html">About</a></li>
+                    <li><a href="/web-profile-beit/service.html" class="active">Services</a></li>
+                    <li><a href="/web-profile-beit/portofolio.html">Portfolio</a></li>
+                    <li><a href="/web-profile-beit/team.html">Team</a></li>
+                    <li><a href="/web-profile-beit/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav><!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Layanan Kami</h1>
+                <p>Solusi teknologi komprehensif untuk kebutuhan bisnis digital Anda</p>
+            </div>
+        </section><!-- Services Detail -->
+        <section class="section services-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Apa Yang Kami Tawarkan</h2>
+                    <p>Layanan profesional dengan teknologi terkini dan tim berpengalaman</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Kami mengembangkan website profesional, responsif, dan SEO-friendly yang disesuaikan dengan
+                            kebutuhan bisnis Anda.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Custom Web Application</li>
+                            <li><i class="fas fa-check-circle"></i> E-Commerce Platform</li>
+                            <li><i class="fas fa-check-circle"></i> Corporate Website</li>
+                            <li><i class="fas fa-check-circle"></i> CMS Development</li>
+                        </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i
+                                class="fas fa-arrow-right"></i> </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile App Development</h3>
+                        <p>Aplikasi mobile native dan hybrid untuk iOS dan Android dengan performa optimal dan user
+                            experience terbaik.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> iOS &amp; Android Apps</li>
+                            <li><i class="fas fa-check-circle"></i> Cross-Platform Development</li>
+                            <li><i class="fas fa-check-circle"></i> App Maintenance &amp; Support</li>
+                            <li><i class="fas fa-check-circle"></i> UI/UX Design</li>
+                        </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i
+                                class="fas fa-arrow-right"></i> </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Cloud Solutions</h3>
+                        <p>Implementasi infrastruktur cloud yang scalable, aman, dan efisien untuk mendukung pertumbuhan
+                            bisnis Anda.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Cloud Migration</li>
+                            <li><i class="fas fa-check-circle"></i> AWS, Azure, Google Cloud</li>
+                            <li><i class="fas fa-check-circle"></i> DevOps Implementation</li>
+                            <li><i class="fas fa-check-circle"></i> Cloud Optimization</li>
+                        </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i
+                                class="fas fa-arrow-right"></i> </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Cybersecurity</h3>
+                        <p>Lindungi aset digital perusahaan dengan solusi keamanan siber komprehensif dan monitoring
+                            24/7.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Security Assessment</li>
+                            <li><i class="fas fa-check-circle"></i> Penetration Testing</li>
+                            <li><i class="fas fa-check-circle"></i> Security Monitoring</li>
+                            <li><i class="fas fa-check-circle"></i> Compliance Management</li>
+                        </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i
+                                class="fas fa-arrow-right"></i> </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Digital Marketing</h3>
+                        <p>Tingkatkan brand awareness dan konversi dengan strategi digital marketing yang data-driven
+                            dan terukur.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> SEO &amp; SEM</li>
+                            <li><i class="fas fa-check-circle"></i> Social Media Marketing</li>
+                            <li><i class="fas fa-check-circle"></i> Content Marketing</li>
+                            <li><i class="fas fa-check-circle"></i> Analytics &amp; Reporting</li>
+                        </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i
+                                class="fas fa-arrow-right"></i> </a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-headset"></i>
+                        </div>
+                        <h3>IT Consulting</h3>
+                        <p>Konsultasi strategis untuk optimalisasi teknologi informasi dan transformasi digital
+                            perusahaan Anda.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> IT Strategy Planning</li>
+                            <li><i class="fas fa-check-circle"></i> Digital Transformation</li>
+                            <li><i class="fas fa-check-circle"></i> System Integration</li>
+                            <li><i class="fas fa-check-circle"></i> Technology Roadmap</li>
+                        </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i
+                                class="fas fa-arrow-right"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Pricing -->
+        <section class="section pricing-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Paket Harga</h2>
+                    <p>Pilih paket yang sesuai dengan kebutuhan dan budget Anda</p>
+                </div>
+                <div class="pricing-toggle">
+                    <div class="toggle-wrapper">
+                        <div class="toggle-option active" onclick="togglePricing('monthly')">
+                            Bulanan
+                        </div>
+                        <div class="toggle-option" onclick="togglePricing('yearly')">
+                            Tahunan
+                        </div>
+                    </div>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Basic</h3>
+                        <div class="pricing-price"><span id="basic-price">Rp 15jt</span> <span>/bulan</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Website Dasar (5 Halaman)</li>
+                            <li><i class="fas fa-check"></i> Responsive Design</li>
+                            <li><i class="fas fa-check"></i> SEO Basic</li>
+                            <li><i class="fas fa-check"></i> 3 Bulan Support</li>
+                            <li><i class="fas fa-check"></i> SSL Certificate</li>
+                        </ul><a href="contact.html" class="btn btn-outline">Pilih Paket</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">
+                            POPULER
+                        </div>
+                        <h3>Professional</h3>
+                        <div class="pricing-price"><span id="pro-price">Rp 35jt</span> <span>/bulan</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Custom Web Application</li>
+                            <li><i class="fas fa-check"></i> Advanced Features</li>
+                            <li><i class="fas fa-check"></i> Database Integration</li>
+                            <li><i class="fas fa-check"></i> 6 Bulan Support</li>
+                            <li><i class="fas fa-check"></i> SEO Advanced</li>
+                            <li><i class="fas fa-check"></i> Analytics Dashboard</li>
+                        </ul><a href="contact.html" class="btn btn-primary">Pilih Paket</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="pricing-price"><span id="ent-price">Rp 75jt</span> <span>/bulan</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Full Custom Solution</li>
+                            <li><i class="fas fa-check"></i> Mobile App Included</li>
+                            <li><i class="fas fa-check"></i> Cloud Infrastructure</li>
+                            <li><i class="fas fa-check"></i> 12 Bulan Support</li>
+                            <li><i class="fas fa-check"></i> Dedicated Team</li>
+                            <li><i class="fas fa-check"></i> Priority Support 24/7</li>
+                        </ul><a href="contact.html" class="btn btn-outline">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Process -->
+        <section class="section process-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Proses Kerja Kami</h2>
+                    <p>Metodologi terstruktur untuk hasil maksimal</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-item">
+                        <div class="process-number">
+                            1
+                        </div>
+                        <h4>Discovery</h4>
+                        <p>Analisis kebutuhan dan requirement gathering</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">
+                            2
+                        </div>
+                        <h4>Planning</h4>
+                        <p>Perencanaan strategi dan desain solusi</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">
+                            3
+                        </div>
+                        <h4>Development</h4>
+                        <p>Pengembangan dengan metodologi Agile</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">
+                            4
+                        </div>
+                        <h4>Testing</h4>
+                        <p>Quality assurance dan user testing</p>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-number">
+                            5
+                        </div>
+                        <h4>Launch</h4>
+                        <p>Deployment dan continuous support</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Technologies -->
+        <section class="section tech-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Teknologi Yang Kami Gunakan</h2>
+                    <p>Tools dan framework terkini untuk hasil terbaik</p>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-item"><i class="fab fa-react"></i>
+                        <p>React</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i>
+                        <p>Node.js</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-python"></i>
+                        <p>Python</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-aws"></i>
+                        <p>AWS</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-docker"></i>
+                        <p>Docker</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-angular"></i>
+                        <p>Angular</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-vuejs"></i>
+                        <p>Vue.js</p>
+                    </div>
+                    <div class="tech-item"><i class="fab fa-php"></i>
+                        <p>PHP</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- CTA -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2>Siap Memulai Proyek Anda?</h2>
+                <p>Konsultasikan kebutuhan teknologi Anda bersama tim ahli kami</p><a href="contact.html"
+                    class="btn btn-white"> <i class="fas fa-paper-plane"></i> Hubungi Kami Sekarang </a>
+            </div>
+        </section><!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>PT Inovasi Digital</h3>
+                        <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital
+                            perusahaan Anda.</p>
+                        <div class="social-links"><a href="#" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i
+                                    class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a
+                            href="services.html">Services</a> <a href="team.html">Team</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile
+                            Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT
+                            Consulting</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
+                        <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
+                        <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div>
-   </nav><!-- Page Header -->
-   <section class="page-header">
-    <div class="container">
-     <h1>Layanan Kami</h1>
-     <p>Solusi teknologi komprehensif untuk kebutuhan bisnis digital Anda</p>
-    </div>
-   </section><!-- Services Detail -->
-   <section class="section services-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Apa Yang Kami Tawarkan</h2>
-      <p>Layanan profesional dengan teknologi terkini dan tim berpengalaman</p>
-     </div>
-     <div class="services-grid">
-      <div class="service-card">
-       <div class="service-icon"><i class="fas fa-laptop-code"></i>
-       </div>
-       <h3>Web Development</h3>
-       <p>Kami mengembangkan website profesional, responsif, dan SEO-friendly yang disesuaikan dengan kebutuhan bisnis Anda.</p>
-       <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> Custom Web Application</li>
-        <li><i class="fas fa-check-circle"></i> E-Commerce Platform</li>
-        <li><i class="fas fa-check-circle"></i> Corporate Website</li>
-        <li><i class="fas fa-check-circle"></i> CMS Development</li>
-       </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i> </a>
-      </div>
-      <div class="service-card">
-       <div class="service-icon"><i class="fas fa-mobile-alt"></i>
-       </div>
-       <h3>Mobile App Development</h3>
-       <p>Aplikasi mobile native dan hybrid untuk iOS dan Android dengan performa optimal dan user experience terbaik.</p>
-       <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> iOS &amp; Android Apps</li>
-        <li><i class="fas fa-check-circle"></i> Cross-Platform Development</li>
-        <li><i class="fas fa-check-circle"></i> App Maintenance &amp; Support</li>
-        <li><i class="fas fa-check-circle"></i> UI/UX Design</li>
-       </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i> </a>
-      </div>
-      <div class="service-card">
-       <div class="service-icon"><i class="fas fa-cloud"></i>
-       </div>
-       <h3>Cloud Solutions</h3>
-       <p>Implementasi infrastruktur cloud yang scalable, aman, dan efisien untuk mendukung pertumbuhan bisnis Anda.</p>
-       <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> Cloud Migration</li>
-        <li><i class="fas fa-check-circle"></i> AWS, Azure, Google Cloud</li>
-        <li><i class="fas fa-check-circle"></i> DevOps Implementation</li>
-        <li><i class="fas fa-check-circle"></i> Cloud Optimization</li>
-       </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i> </a>
-      </div>
-      <div class="service-card">
-       <div class="service-icon"><i class="fas fa-shield-alt"></i>
-       </div>
-       <h3>Cybersecurity</h3>
-       <p>Lindungi aset digital perusahaan dengan solusi keamanan siber komprehensif dan monitoring 24/7.</p>
-       <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> Security Assessment</li>
-        <li><i class="fas fa-check-circle"></i> Penetration Testing</li>
-        <li><i class="fas fa-check-circle"></i> Security Monitoring</li>
-        <li><i class="fas fa-check-circle"></i> Compliance Management</li>
-       </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i> </a>
-      </div>
-      <div class="service-card">
-       <div class="service-icon"><i class="fas fa-chart-line"></i>
-       </div>
-       <h3>Digital Marketing</h3>
-       <p>Tingkatkan brand awareness dan konversi dengan strategi digital marketing yang data-driven dan terukur.</p>
-       <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> SEO &amp; SEM</li>
-        <li><i class="fas fa-check-circle"></i> Social Media Marketing</li>
-        <li><i class="fas fa-check-circle"></i> Content Marketing</li>
-        <li><i class="fas fa-check-circle"></i> Analytics &amp; Reporting</li>
-       </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i> </a>
-      </div>
-      <div class="service-card">
-       <div class="service-icon"><i class="fas fa-headset"></i>
-       </div>
-       <h3>IT Consulting</h3>
-       <p>Konsultasi strategis untuk optimalisasi teknologi informasi dan transformasi digital perusahaan Anda.</p>
-       <ul class="service-features">
-        <li><i class="fas fa-check-circle"></i> IT Strategy Planning</li>
-        <li><i class="fas fa-check-circle"></i> Digital Transformation</li>
-        <li><i class="fas fa-check-circle"></i> System Integration</li>
-        <li><i class="fas fa-check-circle"></i> Technology Roadmap</li>
-       </ul><a href="#contact" class="service-link"> Pelajari Lebih Lanjut <i class="fas fa-arrow-right"></i> </a>
-      </div>
-     </div>
-    </div>
-   </section><!-- Pricing -->
-   <section class="section pricing-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Paket Harga</h2>
-      <p>Pilih paket yang sesuai dengan kebutuhan dan budget Anda</p>
-     </div>
-     <div class="pricing-toggle">
-      <div class="toggle-wrapper">
-       <div class="toggle-option active" onclick="togglePricing('monthly')">
-        Bulanan
-       </div>
-       <div class="toggle-option" onclick="togglePricing('yearly')">
-        Tahunan
-       </div>
-      </div>
-     </div>
-     <div class="pricing-grid">
-      <div class="pricing-card">
-       <h3>Basic</h3>
-       <div class="pricing-price"><span id="basic-price">Rp 15jt</span> <span>/bulan</span>
-       </div>
-       <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Website Dasar (5 Halaman)</li>
-        <li><i class="fas fa-check"></i> Responsive Design</li>
-        <li><i class="fas fa-check"></i> SEO Basic</li>
-        <li><i class="fas fa-check"></i> 3 Bulan Support</li>
-        <li><i class="fas fa-check"></i> SSL Certificate</li>
-       </ul><a href="contact.html" class="btn btn-outline">Pilih Paket</a>
-      </div>
-      <div class="pricing-card featured">
-       <div class="pricing-badge">
-        POPULER
-       </div>
-       <h3>Professional</h3>
-       <div class="pricing-price"><span id="pro-price">Rp 35jt</span> <span>/bulan</span>
-       </div>
-       <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Custom Web Application</li>
-        <li><i class="fas fa-check"></i> Advanced Features</li>
-        <li><i class="fas fa-check"></i> Database Integration</li>
-        <li><i class="fas fa-check"></i> 6 Bulan Support</li>
-        <li><i class="fas fa-check"></i> SEO Advanced</li>
-        <li><i class="fas fa-check"></i> Analytics Dashboard</li>
-       </ul><a href="contact.html" class="btn btn-primary">Pilih Paket</a>
-      </div>
-      <div class="pricing-card">
-       <h3>Enterprise</h3>
-       <div class="pricing-price"><span id="ent-price">Rp 75jt</span> <span>/bulan</span>
-       </div>
-       <ul class="pricing-features">
-        <li><i class="fas fa-check"></i> Full Custom Solution</li>
-        <li><i class="fas fa-check"></i> Mobile App Included</li>
-        <li><i class="fas fa-check"></i> Cloud Infrastructure</li>
-        <li><i class="fas fa-check"></i> 12 Bulan Support</li>
-        <li><i class="fas fa-check"></i> Dedicated Team</li>
-        <li><i class="fas fa-check"></i> Priority Support 24/7</li>
-       </ul><a href="contact.html" class="btn btn-outline">Pilih Paket</a>
-      </div>
-     </div>
-    </div>
-   </section><!-- Process -->
-   <section class="section process-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Proses Kerja Kami</h2>
-      <p>Metodologi terstruktur untuk hasil maksimal</p>
-     </div>
-     <div class="process-grid">
-      <div class="process-item">
-       <div class="process-number">
-        1
-       </div>
-       <h4>Discovery</h4>
-       <p>Analisis kebutuhan dan requirement gathering</p>
-      </div>
-      <div class="process-item">
-       <div class="process-number">
-        2
-       </div>
-       <h4>Planning</h4>
-       <p>Perencanaan strategi dan desain solusi</p>
-      </div>
-      <div class="process-item">
-       <div class="process-number">
-        3
-       </div>
-       <h4>Development</h4>
-       <p>Pengembangan dengan metodologi Agile</p>
-      </div>
-      <div class="process-item">
-       <div class="process-number">
-        4
-       </div>
-       <h4>Testing</h4>
-       <p>Quality assurance dan user testing</p>
-      </div>
-      <div class="process-item">
-       <div class="process-number">
-        5
-       </div>
-       <h4>Launch</h4>
-       <p>Deployment dan continuous support</p>
-      </div>
-     </div>
-    </div>
-   </section><!-- Technologies -->
-   <section class="section tech-section">
-    <div class="container">
-     <div class="section-title">
-      <h2>Teknologi Yang Kami Gunakan</h2>
-      <p>Tools dan framework terkini untuk hasil terbaik</p>
-     </div>
-     <div class="tech-grid">
-      <div class="tech-item"><i class="fab fa-react"></i>
-       <p>React</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-node-js"></i>
-       <p>Node.js</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-python"></i>
-       <p>Python</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-aws"></i>
-       <p>AWS</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-docker"></i>
-       <p>Docker</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-angular"></i>
-       <p>Angular</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-vuejs"></i>
-       <p>Vue.js</p>
-      </div>
-      <div class="tech-item"><i class="fab fa-php"></i>
-       <p>PHP</p>
-      </div>
-     </div>
-    </div>
-   </section><!-- CTA -->
-   <section class="section cta-section">
-    <div class="container">
-     <h2>Siap Memulai Proyek Anda?</h2>
-     <p>Konsultasikan kebutuhan teknologi Anda bersama tim ahli kami</p><a href="contact.html" class="btn btn-white"> <i class="fas fa-paper-plane"></i> Hubungi Kami Sekarang </a>
-    </div>
-   </section><!-- Footer -->
-   <footer class="footer">
-    <div class="container">
-     <div class="footer-grid">
-      <div class="footer-section">
-       <h3>PT Inovasi Digital</h3>
-       <p>Solusi teknologi terpercaya untuk bisnis modern. Kami siap membantu mewujudkan visi digital perusahaan Anda.</p>
-       <div class="social-links"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a> <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a> <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-       </div>
-      </div>
-      <div class="footer-section">
-       <h3>Quick Links</h3><a href="index.html">Home</a> <a href="about.html">About Us</a> <a href="services.html">Services</a> <a href="team.html">Team</a>
-      </div>
-      <div class="footer-section">
-       <h3>Services</h3><a href="services.html">Web Development</a> <a href="services.html">Mobile Apps</a> <a href="services.html">Cloud Solutions</a> <a href="services.html">IT Consulting</a>
-      </div>
-      <div class="footer-section">
-       <h3>Contact</h3>
-       <p><i class="fas fa-map-marker-alt"></i> Jl. Teknologi No. 123, Jakarta 12345</p>
-       <p><i class="fas fa-phone"></i> +62 21 1234 5678</p>
-       <p><i class="fas fa-envelope"></i> info@inovasidigital.com</p>
-      </div>
-     </div>
-     <div class="footer-bottom">
-      <p>© 2024 PT Inovasi Digital. All rights reserved.</p>
-     </div>
-    </div>
-   </footer>
-  </div>
-  <script>
+    <script>
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('active');
@@ -970,14 +1003,16 @@
         }
 
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const navMenu = document.getElementById('navMenu');
             const mobileToggle = document.querySelector('.mobile-toggle');
-            
+
             if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
                 navMenu.classList.remove('active');
             }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a068e3e8042afeb',t:'MTc2MzQ1OTM0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a068e3e8042afeb',t:'MTc2MzQ1OTM0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
 </html>
